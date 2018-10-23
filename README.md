@@ -1,5 +1,5 @@
 # Movie Tracker
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/Jessica-Erickson/movie-tracker.svg?columns=all)](https://waffle.io/Jessica-Erickson/movie-tracker)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/Jessica-Erickson/movie-tracker.svg?columns=all)](https://waffle.io/Jessica-Erickson/movie-tracker)<br>
  An interactive Application that allows you to search a database of movies and select favorites
 
 ### See it Live

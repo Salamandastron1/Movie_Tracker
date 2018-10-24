@@ -31,6 +31,11 @@ Additional enhancments could include :
 * [Any cool features we could possibly add after deadline]
 
 ### ScreenShots
+
+#### Wireframe
+
+![Wireframe](./public/New Wireframe 1.png)
+
 #### [insert application screenshots]
 
 ### Original Assignment

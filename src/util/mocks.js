@@ -1,7 +1,10 @@
+import key from './API.js'
+
+
 const window.fetch = jest.fn(() => {
     Promise.resolve({
       ok: true,
-      json: () => Promise.resolve(resultsArray)
+      json: () => Promise.resolve(mockResults)
     });
   }
 )
@@ -16,4 +19,4 @@ const mockResults = {
   ] 
 }
 
-const url = '';
+const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;

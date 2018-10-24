@@ -3,8 +3,16 @@ import * as mock from './mocks.js';
 
 describe('API', () => {
   describe('getMovieData', () => {
-    it('should call fetch with the correct params', async () => {
 
+    beforeEach(() => {
+      window.fetch = jest.fn(() => {
+        mock.fetch()
+      })
+    })
+
+    it('should call fetch with the correct params', async () => {
+      await API.getMovieData()
+      expect(window.fetch).toHaveBeenCalledWith(mock.url)
     });
 
     it('should return data in the correct format', async () => {

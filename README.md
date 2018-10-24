@@ -34,7 +34,7 @@ Additional enhancments could include :
 
 #### Wireframe
 
-![Wireframe](./public/New Wireframe 1.png)
+![Wireframe](./public/new-wire.png)
 
 #### [insert application screenshots]
 

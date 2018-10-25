@@ -1,4 +1,4 @@
-import { key } from './key.js'
+import { key } from './src/util/key.js'
 
 export const fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,

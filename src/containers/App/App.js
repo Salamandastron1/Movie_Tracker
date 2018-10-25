@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
+import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
-// import Home from '../../Home'
 
 class App extends Component {
-
-
-
 
   render() {
     return (
       <div className="App">
-        {/* <Switch>
-          <Route exact path='/'/>
-        </Switch> */}
+        <Route exact path='/' component={ CardContainer }/>
       </div>
     );
   }

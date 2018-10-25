@@ -1,5 +1,5 @@
 import * as API from './Helper.js';
-import * as mock from './mocks.js';
+import * as mock from '../../mocks.js';
 
 describe('API', () => {
   describe('getMovieData', () => {

@@ -17,5 +17,6 @@ const cleanMovieData = (data) => {
     poster_path: movie.poster_path,
     overview: movie.overview,
     release_date: movie.release_date,
+    favorited: false,
   }))
 }

@@ -11,7 +11,8 @@ it('renders without crashing', () => {
   const initialState = {movies: []}
   const store = mockStore(initialState);
   const div = document.createElement('div');
-  ReactDOM.render(<Provider store={store}>
+  ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

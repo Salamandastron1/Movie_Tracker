@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {key} from '../../util/key.js';
 import {setMostRecent} from '../../Action-creators/SetMostRecent';
-import * as API from '../../util/Helper'
+import * as API from '../../util/Helper';
+import Card from '../Card/Card';
 
 export class CardContainer extends Component{
   constructor() {
@@ -14,8 +15,14 @@ export class CardContainer extends Component{
     this.props.onload(initialMovieData)
   }
  render() {
+  const { movies } = this.props;
+
+  const movieCards = movies.map(movie => {
+    return <Card ...movie />
+  })
   return (
     <div>
+     {movieCards}
     </div>
   )
  } 

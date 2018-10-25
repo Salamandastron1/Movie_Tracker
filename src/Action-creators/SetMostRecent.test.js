@@ -6,10 +6,21 @@ describe('setMostRecent', () => {
     const expected = {
       type: 'SET_MOST_RECENT',
       movies: [{
-      poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
-      title: 'Venom',
-      vote_average: 5}]
+        title: 'Venom',
+        poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
+        overview: 'This movie is RAD!',
+        release_date: '2018-9-11',
+      }],
     }
-    expect(setMostRecent(mocks.mockResults)).toEqual(expected)
+
+    const data = [{
+      title: 'Venom',
+      poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
+      overview: 'This movie is RAD!',
+      release_date: '2018-9-11',
+    }]
+
+    const result = setMostRecent(data)
+    expect(result).toEqual(expected)
   })
 })

@@ -23,7 +23,7 @@ describe('API', () => {
     });
 
     it('should throw an error if the status is not ok', async () => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+       window.fetch = jest.fn().mockImplementation(() => Promise.reject({
           ok: false
         }))
       const expected = { ok: false}
@@ -31,5 +31,26 @@ describe('API', () => {
 
       expect(await API.getMovieData()).toEqual(expected)
     });
+  });
+
+  describe('cleanMovieData', () => {
+
+    it('Should return data in the correct format', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mock.mockResults)
+      }))
+
+      const expected = [{
+        title: 'Venom',
+        poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
+        overview: 'This movie is RAD!',
+        release_date: '2018-9-11',
+      }]
+      const result = await API.getMovieData();
+
+      expect(expected).toEqual(result);
+
+    })
   });
 });

@@ -1,4 +1,4 @@
-import { key } from './API.js';
+import { key } from './key.js';
 
 export const getMovieData = async () => {
   try {

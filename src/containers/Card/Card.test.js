@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 
 describe('Card', () => {
   it('should match snapshot', () => {
-    const movie = {
+    let movie = {
         title: 'Venom',
         poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
         overview: 'This movie is RAD!',
@@ -13,7 +13,7 @@ describe('Card', () => {
         favorited: false,
       }
 
-    const wrapper = shallow(<Card ...movie />);
+    const wrapper = shallow( <Card movie={movie} /> );
 
     expect(wrapper).toMatchSnapshot();
   });

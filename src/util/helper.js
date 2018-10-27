@@ -36,8 +36,8 @@ export const getUser = async (user) => {
   }
 
   const response = await fetch(url, optionsObject);
-  const data = await response.json();
-  return data;
+  const existingUser = await response.json();
+  return existingUser.data.name;
 
   
 }

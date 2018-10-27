@@ -64,15 +64,17 @@ describe('API', () => {
         )
       )
     })
-    it('should should check if the user exists', async () => {
+    it('should check if the user exists', async () => {
       const url = 'http://localhost:3000/api/users'
       API.getUser(mock.user)
 
       expect(window.fetch).toHaveBeenCalledWith(url, mock.options)
     })
-    // it('', () => {
-    //   const expected = mock.userResponse
-    //   const result = await 
-    // })
+    it('should return is status is success', async () => {
+      const result = await API.getUser(mock.user);
+      const expected = 'Jessica';
+
+      expect(result).toEqual(expected);
+    })
   })
 });

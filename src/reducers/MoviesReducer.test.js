@@ -1,5 +1,5 @@
-import * as mocks from '../../mocks';
-import {MoviesReducer} from './MoviesReducer';
+import * as mocks from '../util/mocks';
+import {MoviesReducer} from './moviesReducer';
 
 describe('MoviesReducer', () => {
   it('should return updated state', () => {

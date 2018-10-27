@@ -11,3 +11,5 @@ const Card = ({ title , poster_path , overview , release_date , favorited }) => 
     </div>
   )
 }
+
+export default Card

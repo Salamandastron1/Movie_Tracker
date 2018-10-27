@@ -1,5 +1,5 @@
-import * as mocks from '../../mocks';
-import {setMostRecent} from './SetMostRecent'
+import * as mocks from '../util/mocks';
+import {setMostRecent} from './setMostRecent'
 
 describe('setMostRecent', () => {
   it('should return an action object', () => {

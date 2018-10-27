@@ -10,7 +10,6 @@ export class CardContainer extends Component{
     super()
   }
   componentDidMount = async () => {
-    debugger
     const initialMovieData = await API.getMovieData()
     this.props.onload(initialMovieData)
   }
@@ -18,7 +17,7 @@ export class CardContainer extends Component{
   const { movies } = this.props;
 
   const movieCards = movies.map(movie => {
-    return <Card ...movie />
+    return <Card {...movie} />
   })
   return (
     <div>

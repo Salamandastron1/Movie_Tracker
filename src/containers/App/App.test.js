@@ -6,6 +6,8 @@ import {BrowserRouter} from 'react-router-dom';
 import { createStore } from 'redux';
 import configureMockStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
+Enzyme.configure({adapter: new Adapter()})
+
 
 
 describe('App', () => {

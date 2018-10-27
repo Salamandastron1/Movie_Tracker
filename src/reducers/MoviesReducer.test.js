@@ -15,9 +15,9 @@ describe('MoviesReducer', () => {
     const expected = [mocks.mockMovie]
     const mockAction = {
       type: 'SET_MOST_RECENT',
-      ...mocks.mockMovie
+      movies: [mocks.mockMovie]
     }
     expect(moviesReducer(undefined, mockAction)).toEqual(expected)
   })
-  it()
+  // it()
 })

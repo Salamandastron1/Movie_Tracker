@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
 

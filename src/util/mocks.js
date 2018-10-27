@@ -52,8 +52,8 @@ export const userResponse = {
 }
 
 export const user = {
-  email: 'jerick999@gmail.com',
   password: 'passw0rd',
+  email: 'jerick999@gmail.com',
 }
 
 export const options = {

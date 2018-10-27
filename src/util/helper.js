@@ -22,16 +22,22 @@ const cleanMovieData = (data) => {
 }
 
 export const getUser = async (user) => {
+  const url = 'http://localhost:3000/api/users'
   const { email, password } = user;
   const optionsObject = {
     method: 'POST',
     body: JSON.stringify({
-        email, 
-        password
+      password,
+      email
       }),
     headers: {
       'Content-Type': 'application/json'
     },
   }
+
+  const response = await fetch(url, optionsObject);
+  const data = await response.json();
+  return data;
+
   
 }

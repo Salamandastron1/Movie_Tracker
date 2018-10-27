@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {key} from '../../util/key.js';
-import {setMostRecent} from '../../Action-creators/setMostRecent';
-import * as API from '../../util/helper';
+import {setMostRecent} from '../../Action-creators/SetMostRecent';
+import * as API from '../../util/Helper';
 import Card from '../Card/Card';
 
 export class CardContainer extends Component{
@@ -10,7 +10,6 @@ export class CardContainer extends Component{
     super()
   }
   componentDidMount = async () => {
-    debugger
     const initialMovieData = await API.getMovieData()
     this.props.onload(initialMovieData)
   }

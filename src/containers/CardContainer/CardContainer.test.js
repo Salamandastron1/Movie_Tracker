@@ -16,6 +16,8 @@ describe('mapStateToProps', () => {
       poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
       title: 'Venom',
       vote_average: 5 ,
+      overview: 'This movie is RAD!',
+      release_date: '2018-9-11',
     }
   ]}
 

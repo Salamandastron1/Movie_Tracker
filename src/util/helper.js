@@ -45,3 +45,7 @@ export const getUser = async (user) => {
     throw new Error('status was not ok')  
   }
 }
+
+export const addUser = async () => {
+
+}

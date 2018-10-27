@@ -57,12 +57,36 @@ export const user = {
 }
 
 export const options = {
-    method: 'POST',
-    body: JSON.stringify({
-    password: 'passw0rd',
-    email: 'jerick999@gmail.com',
-      }),
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  }
+  method: 'POST',
+  body: JSON.stringify({
+  password: 'passw0rd',
+  email: 'jerick999@gmail.com',
+    }),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+}
+
+export const newUserResponse = {
+  id: 4,
+  message: "New user created",
+  status: "success",
+}
+
+export const newUser = {
+  name: 'Tim', 
+  password: 'm30w',
+  email: 'tag.garrity@gmail.com', 
+}
+
+export const newOptions = {
+  method: 'POST',
+  body: JSON.stringify({
+  name: 'Tim',
+  password: 'm30w',
+  email: 'tag.garrity@gmail.com',
+    }),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+}

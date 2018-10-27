@@ -86,4 +86,27 @@ describe('API', () => {
       await expect(API.getUser(mock.user)).rejects.toEqual(expected)    
     })
   })
+  describe('addUser', () => {
+    beforeEach(() => {
+      window.fetch = jest.fn(() => (
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mock.newUserResponse)
+        })
+      ))
+    });
+    it('should call fetch with the correct params', () => {
+      const url = 'http://localhost:3000/api/users/new'
+      
+      API.addUser(mock.newUser)
+
+      expect(window.fetch).toHaveBeenCalledWith(url, mock.newOptions)
+    })
+    it('should add a user if they don\'t already exist', () => {
+
+    })
+    it('should throw an error if the user already exists', () => {
+
+    })
+  });
 });

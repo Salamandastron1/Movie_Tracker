@@ -30,7 +30,7 @@ ShallowWrapper {
       "children": Array [
         <h1 />,
         <img
-          alt="This is the poster for the movie undefined in theaters undefined."
+          alt="This is the poster for the movie \\"undefined\\" in theaters undefined."
           src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined"
         />,
         <p />,
@@ -55,7 +55,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "alt": "This is the poster for the movie undefined in theaters undefined.",
+          "alt": "This is the poster for the movie \\"undefined\\" in theaters undefined.",
           "src": "https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined",
         },
         "ref": null,
@@ -96,7 +96,7 @@ ShallowWrapper {
         "children": Array [
           <h1 />,
           <img
-            alt="This is the poster for the movie undefined in theaters undefined."
+            alt="This is the poster for the movie \\"undefined\\" in theaters undefined."
             src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined"
           />,
           <p />,
@@ -121,7 +121,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "alt": "This is the poster for the movie undefined in theaters undefined.",
+            "alt": "This is the poster for the movie \\"undefined\\" in theaters undefined.",
             "src": "https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined",
           },
           "ref": null,

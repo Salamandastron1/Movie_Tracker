@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {key} from '../../util/key.js';
-import {setMostRecent} from '../../Action-creators/SetMostRecent';
-import * as API from '../../util/Helper';
+import {setMostRecent} from '../../Action-creators/setMostRecent';
+import * as API from '../../util/helper';
 import Card from '../Card/Card';
 
 export class CardContainer extends Component{

@@ -36,8 +36,12 @@ export const getUser = async (user) => {
   }
 
   const response = await fetch(url, optionsObject);
-  const existingUser = await response.json();
-  return existingUser.data.name;
-
-  
+  if(response.ok) {
+    const existingUser = await response.json();
+    return existingUser.data.name;  
+  } else if (response.status === 500) {
+    throw new Error('status was not ok, 500 error')
+  } else {
+    throw new Error('status was not ok')  
+  }
 }

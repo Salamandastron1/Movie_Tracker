@@ -76,5 +76,14 @@ describe('API', () => {
 
       expect(result).toEqual(expected);
     })
+    it('should give an error message if fetch fails', async () => {
+      window.fetch = jest.fn(() => (Promise.resolve({
+          ok: false,
+          status: 500,
+        })))
+      const expected = Error('status was not ok, 500 error')
+
+      await expect(API.getUser(mock.user)).rejects.toEqual(expected)    
+    })
   })
 });

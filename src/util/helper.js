@@ -22,9 +22,9 @@ const cleanMovieData = (data) => {
 }
 
 export const getUser = async (user) => {
-  const url = 'http://localhost:3000/api/users'
+  const url = 'http://localhost:3000/api/users';
   const { email, password } = user;
-  const optionsObject = {
+  const options = {
     method: 'POST',
     body: JSON.stringify({
       password,
@@ -35,7 +35,7 @@ export const getUser = async (user) => {
     },
   }
 
-  const response = await fetch(url, optionsObject);
+  const response = await fetch(url, options);
   if(response.ok) {
     const existingUser = await response.json();
     return existingUser.data.name;  
@@ -46,6 +46,20 @@ export const getUser = async (user) => {
   }
 }
 
-export const addUser = async () => {
+export const addUser = async (user) => {
+  const url = 'http://localhost:3000/api/users/new';
+  const { email , password , name } = user;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      password,
+      email,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  }
 
+  const response = await fetch(url, options);
 }

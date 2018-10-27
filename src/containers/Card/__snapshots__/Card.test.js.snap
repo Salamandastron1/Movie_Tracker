@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot 1`] = `
+<div>
+  <h1 />
+  <img
+    alt="This is the poster for the movie \\"undefined\\" in theaters undefined."
+    src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined"
+  />
+  <p />
+  <p />
+</div>
+`;

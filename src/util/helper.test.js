@@ -54,4 +54,22 @@ describe('API', () => {
 
     })
   });
+  describe('getUser', () => {
+    beforeEach(() => {
+      window.fetch = jest.fn(() => (Promise.resolve({
+              json: () => Promise.resolve(mock.userResponse),
+              ok: true,
+            }
+          )
+        )
+      )
+    })
+    it('should should check if the user exists', async () => {
+      const expected = mock.userResponse
+      const result = await API.getUser(mock.user)
+      const url = 'http://localhost:3000/api/users'
+
+      expect(window.fetch).toHaveBeenCalledWith(url, mock.options)
+    })
+  })
 });

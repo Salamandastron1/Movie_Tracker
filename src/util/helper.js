@@ -20,3 +20,18 @@ const cleanMovieData = (data) => {
     favorited: false,
   }))
 }
+
+export const getUser = async (user) => {
+  const { email, password } = user;
+  const optionsObject = {
+    method: 'POST',
+    body: JSON.stringify({
+        email, 
+        password
+      }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  }
+  
+}

@@ -57,17 +57,14 @@ export const getUser = async (user) => {
   const url = 'http://localhost:3000/api/users';
   const options = makeOptions(user);
   const response = await fetch(url, options);
-
+  debugger;
   if(response.ok) {
     const existingUser = await response.json();
     const { name } = existingUser.data;
     const { message } = existingUser;
-    console.log(message)
     return { name , message };  
-  } else if (response.status === 500) {
-    throw new Error('status was not ok, 500 error')
   } else {
-    throw new Error('status was not ok')  
+    throw new Error('Email and Password do not match.')  
   }
 }
 

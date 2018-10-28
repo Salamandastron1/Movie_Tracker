@@ -51,7 +51,7 @@ export class SignUp extends Component {
           placeholder="Enter your password"/>
         <input 
           type='submit'  
-          value='SignUp'/>
+          value='Sign Up'/>
       </form>
     )
   }

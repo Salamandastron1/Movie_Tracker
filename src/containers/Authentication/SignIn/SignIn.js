@@ -43,7 +43,7 @@ export class SignIn extends Component {
           placeholder="Enter your password"/>
         <input 
           type='submit'
-          value='SignIn' />
+          value='Sign In' />
       </form>
     )
   }

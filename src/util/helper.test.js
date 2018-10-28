@@ -72,7 +72,7 @@ describe('API', () => {
     })
     it('should return is status is success', async () => {
       const result = await API.getUser(mock.user);
-      const expected = 'Jessica';
+      const expected = { name: 'Jessica', message: 'Retrieved ONE User' };
 
       expect(result).toEqual(expected);
     })
@@ -102,9 +102,13 @@ describe('API', () => {
 
       expect(window.fetch).toHaveBeenCalledWith(url, mock.newOptions)
     })
-    it('should add a user if they don\'t already exist', () => {
+    it('should return status if user is added', async () => {
+      const expected = 'New user created';
+      const result = await API.addUser(mock.newUser);
 
+      expect(result).toEqual(expected);
     })
+    // it('should put new user name in local storage')
     it('should throw an error if the user already exists', () => {
 
     })

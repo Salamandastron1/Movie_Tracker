@@ -7,7 +7,6 @@ export class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-      error: '',
     }
 
   }
@@ -24,15 +23,16 @@ export class SignIn extends Component {
     const user = { password, email };
     e.preventDefault();
     try {
-      await API.getUser(user);
-      this.setState({ error: '' });
+      await API.loginUser(user);
+      //this.props.loginUser(user);
     } catch (error) {
-      this.setState({ error: error.message });
+      //this.props.setError(error);
     }
   }
 
   render() {
-    const { email, password , error } = this.state
+    const { email, password } = this.state
+    const { error } = this.props;
     return (
       <form 
       onSubmit={this.loginUser}>

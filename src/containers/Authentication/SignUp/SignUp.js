@@ -8,8 +8,6 @@ export class SignUp extends Component {
       name: '',
       email: '',
       password: '',
-      error: '',
-      isLoggedIn: false,
     }
 
   }
@@ -22,19 +20,20 @@ export class SignUp extends Component {
   }
 
   submitNewUser = async (e) => {
+    e.preventDefault();
     const { name , email , password } = this.state;
     const user = { name , email , password };
-    e.preventDefault();
     try {
-      await API.addUser(user)
-      this.setState({ error: '' });
+      await API.loginUser(user)
+      //this.props.loginUser(user);
     } catch (error) {
-      this.setState({ error: error.message });
+      //this.props.setError(error);
     }
   }
 
   render() {
-    const { name, email, password , error } = this.state
+    const { name, email, password } = this.state;
+    const { error } = this.props;
     return (
       <form 
       onSubmit={this.submitNewUser}>

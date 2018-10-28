@@ -13,7 +13,6 @@ export class CardContainer extends Component{
     } catch (e) {
       console.log(e.message);
     }
-    
   }
 
   render() {

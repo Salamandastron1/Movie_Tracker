@@ -81,7 +81,7 @@ describe('API', () => {
           ok: false,
           status: 500,
         })))
-      const expected = Error('status was not ok, 500 error')
+      const expected = Error('Email and Password do not match.')
 
       await expect(API.getUser(mock.user)).rejects.toEqual(expected)    
     })
@@ -118,7 +118,7 @@ describe('API', () => {
         status: 500,
       })));
 
-      const expected = Error('status was not ok, 500 error');
+      const expected = Error('Email has already been used.');
 
       await expect(API.addUser(mock.newUser)).rejects.toEqual(expected);
     });

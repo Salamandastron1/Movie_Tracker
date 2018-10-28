@@ -19,5 +19,9 @@ exports[`SignIn should match the snapshot 1`] = `
     type="password"
     value=""
   />
+  <input
+    type="submit"
+    value="Sign In"
+  />
 </form>
 `;

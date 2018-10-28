@@ -6,7 +6,13 @@ import Card from '../Card/Card';
 
 export class CardContainer extends Component{
   componentDidMount = async () => {
-    const initialMovieData = await API.getMovieData()
+    try {
+      const initialMovieData = await API.getMovieData()
+      return initialMovieData;
+    } catch (e) {
+      console.log(e.message)
+    }
+    
     this.props.onload(initialMovieData)
   }
 

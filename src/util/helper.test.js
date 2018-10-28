@@ -110,7 +110,7 @@ describe('API', () => {
     })
     // it('should put new user name in local storage')
     it('should throw an error if the user already exists', () => {
-
+      expect
     })
   });
 });

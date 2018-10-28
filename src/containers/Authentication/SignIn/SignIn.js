@@ -20,11 +20,10 @@ export class SignIn extends Component {
 
   loginUser = async (e) => {
     const { password, email } = this.state;
-    const user = { password, email };
     let currentUser;
     e.preventDefault();
     try {
-      currentUser = await API.loginUser(user);
+      currentUser = await API.loginUser(this.state);
       return currentUser;
     } catch (error) {
       //this.props.setError(error);
@@ -34,28 +33,37 @@ export class SignIn extends Component {
 
   render() {
     const { email, password } = this.state
-    const { error } = this.props;
-    return (
-      <form 
-      onSubmit={this.loginUser}>
-        { error !== '' && <h2> { error } </h2> }
-        <input 
-          className='email' 
-          onChange={this.updateValue}
-          name="email" 
-          value={email} 
-          placeholder="Enter your email"/>
-        <input 
-          className='password' 
-          onChange={this.updateValue}
-          name="password" 
-          value={password} 
-          type="password" 
-          placeholder="Enter your password"/>
-        <input 
-          type='submit'
-          value='Sign In' />
-      </form>
-    )
+    const { error, id } = this.props;
+
+    let form;
+    
+    if (id) {
+      form = <input 
+              type='button'
+              value='Sign Out' />
+    } else {
+      form = (
+        <form 
+          onSubmit={this.loginUser}>
+          { error !== '' && <h2> { error } </h2> }
+          <input 
+            className='email' 
+            onChange={this.updateValue}
+            name="email" 
+            value={email} 
+            placeholder="Enter your email"/>
+          <input 
+            className='password' 
+            onChange={this.updateValue}
+            name="password" 
+            value={password} 
+            type="password" 
+            placeholder="Enter your password"/>
+          <input 
+            type='submit'
+            value='Sign In' />
+        </form>)
+    }
+    return form;
   }
 }

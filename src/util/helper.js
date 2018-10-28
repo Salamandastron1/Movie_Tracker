@@ -17,6 +17,7 @@ const cleanMovieData = (data) => {
     overview: movie.overview,
     release_date: movie.release_date,
     favorited: false,
+    id: movie.id,
   }))
 }
 

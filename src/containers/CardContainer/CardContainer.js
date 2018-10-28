@@ -8,12 +8,12 @@ export class CardContainer extends Component{
   componentDidMount = async () => {
     try {
       const initialMovieData = await API.getMovieData();
+      this.props.onload(initialMovieData)
       return initialMovieData;
     } catch (e) {
       console.log(e.message);
     }
     
-    this.props.onload(initialMovieData)
   }
 
   render() {

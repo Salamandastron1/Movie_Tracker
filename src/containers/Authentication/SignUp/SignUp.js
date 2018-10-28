@@ -15,19 +15,19 @@ export class SignUp extends Component {
     const { name, email, password } = this.state
     return (
       <form 
-      onSubmit={}>
+      onSubmit={''}>
         <input 
-          onChange={}
+          onChange={''}
           name="name" 
           value={name} 
           placeholder="Enter your name"/>
         <input 
-          onChange={}
+          onChange={''}
           name="email" 
           value={email} 
           placeholder="Enter your email"/>
         <input 
-          onChange={}
+          onChange={''}
           name="password" 
           value={password} 
           type="password" 

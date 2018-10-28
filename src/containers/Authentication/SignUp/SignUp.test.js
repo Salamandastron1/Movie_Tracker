@@ -2,6 +2,7 @@ import { SignUp } from './SignUp.js';
 import React from 'react';
 import * as mock from '../../../util/mocks.js';
 import { shallow, mount } from 'enzyme';
+import * as API from '../../../util/helper'
 
 
 describe('SignUp', () => {
@@ -14,10 +15,10 @@ describe('SignUp', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call handle change on keypress', async () => {
+  it('should call updateValue on change', async () => {
     const expected = 'j';
     const spy = jest.spyOn(wrapper.instance(), 
-    'handleChange');
+    'updateValue');
     wrapper.instance().forceUpdate();
     wrapper.find('#name').simulate('change', {
       target: {
@@ -28,5 +29,22 @@ describe('SignUp', () => {
     expect(spy).toHaveBeenCalled();
     expect(wrapper.state('name')).toEqual(expected);
   });
+  it('should call submitNewUser on submit', () => {
+    const spy = jest.spyOn(wrapper.instance(), 
+    'submitNewUser');
+    wrapper.instance().forceUpdate();
+    wrapper.find('form').simulate('submit', {
+      preventDefault: () => {}
+    });
 
+    expect(spy).toHaveBeenCalled();
+  })
+  it('should call addUser on submit', () => {
+    API.addUser = jest.fn()
+    wrapper.find('form').simulate('submit', {
+      preventDefault: () => {}
+    });
+
+    expect(API.addUser).toHaveBeenCalled();
+  })
 });

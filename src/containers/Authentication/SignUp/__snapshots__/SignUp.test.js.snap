@@ -2,7 +2,7 @@
 
 exports[`SignUp should match the snapshot 1`] = `
 <form
-  onSubmit=""
+  onSubmit={[Function]}
 >
   <input
     id="name"

@@ -60,9 +60,8 @@ export const getUser = async (user) => {
   const response = await fetch(url, options);
   if(response.ok) {
     const existingUser = await response.json();
-    const { name } = existingUser.data;
-    const { message } = existingUser;
-    return { name , message };  
+    const { name, id } = existingUser.data;
+    return { name, id};  
   } else {
     throw new Error('Email and Password do not match.')  
   }
@@ -77,8 +76,21 @@ export const addUser = async (user) => {
   if (response.ok) {
     const newUser = await response.json();
 
-    return newUser.message;
+    return {
+      name: user.name,
+      id: newUser.id
+    };
   } else {
     throw new Error('Email has already been used.');
   } 
+}
+
+export const loginUser = async (user) => {
+  let currentUser;
+  if (user.name) {
+   currentUser = await addUser(user);
+  } else {
+   currentUser = await getUser(user);
+  }
+  return currentUser;
 }

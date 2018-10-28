@@ -21,13 +21,15 @@ export class SignIn extends Component {
   loginUser = async (e) => {
     const { password, email } = this.state;
     const user = { password, email };
+    let currentUser;
     e.preventDefault();
     try {
-      await API.loginUser(user);
-      //this.props.loginUser(user);
+      currentUser = await API.loginUser(user);
+      return currentUser;
     } catch (error) {
       //this.props.setError(error);
     }
+    //this.props.loginUser(currentUser);
   }
 
   render() {

@@ -23,12 +23,14 @@ export class SignUp extends Component {
     e.preventDefault();
     const { name , email , password } = this.state;
     const user = { name , email , password };
+    let currentUser;
     try {
-      await API.loginUser(user)
-      //this.props.loginUser(user);
+      currentUser = await API.loginUser(user)
+      return currentUser;
     } catch (error) {
       //this.props.setError(error);
     }
+    //this.props.loginUser(currentUser);
   }
 
   render() {

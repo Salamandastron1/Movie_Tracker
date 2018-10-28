@@ -11,23 +11,33 @@ export class SignUp extends Component {
 
   }
 
+  handleChange = (e) => {
+    const { value, name } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
   render() {
     const { name, email, password } = this.state
     return (
       <form 
       onSubmit={''}>
-        <input 
-          onChange={''}
+        <input
+          id='name' 
+          onChange={this.handleChange}
           name="name" 
           value={name} 
           placeholder="Enter your name"/>
         <input 
-          onChange={''}
+          id='email' 
+          onChange={this.handleChange}
           name="email" 
           value={email} 
           placeholder="Enter your email"/>
         <input 
-          onChange={''}
+          id='password' 
+          onChange={this.handleChange}
           name="password" 
           value={password} 
           type="password" 

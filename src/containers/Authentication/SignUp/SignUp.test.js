@@ -1,7 +1,7 @@
 import { SignUp } from './SignUp.js';
 import React from 'react';
 import * as mock from '../../../util/mocks.js';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 
 describe('SignUp', () => {
@@ -14,16 +14,19 @@ describe('SignUp', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call handle change on keypress', () => {
-    const result = wrapper.state('name');
+  it('should call handle change on keypress', async () => {
     const expected = 'j';
     const spy = jest.spyOn(wrapper.instance(), 
     'handleChange');
-    wrapper.find('[name = \'name\']').simulate('keypress', {
-      char: 'j'
+    wrapper.instance().forceUpdate();
+    wrapper.find('#name').simulate('change', {
+      target: {
+        value: 'j',
+        name: 'name',
+      }
     });
     expect(spy).toHaveBeenCalled();
-    expect(result).toEqual(expected);
+    expect(wrapper.state('name')).toEqual(expected);
   });
 
 });

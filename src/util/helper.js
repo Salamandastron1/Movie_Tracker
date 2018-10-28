@@ -81,7 +81,7 @@ export const addUser = async (user) => {
     const newUser = await response.json();
 
     return newUser.message;
-  } else if (response.error === "Key (email)=(justinstewart3313@gmail.com) already exists.") {
+  } else {
     throw new Error('Email has already been used.');
   } 
 }

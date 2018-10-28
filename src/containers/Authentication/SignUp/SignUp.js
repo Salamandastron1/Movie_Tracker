@@ -7,7 +7,8 @@ export class SignUp extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      error: '',
     }
 
   }
@@ -19,17 +20,24 @@ export class SignUp extends Component {
     })
   }
 
-  submitNewUser = (e) => {
+  submitNewUser = async (e) => {
+    const { name , email , password } = this.state;
+    const user = { name , email , password };
     e.preventDefault();
-    debugger;
-    API.addUser(this.state)
+    try {
+      await API.addUser(user)
+      this.setState({ error: '' });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   }
 
   render() {
-    const { name, email, password } = this.state
+    const { name, email, password , error } = this.state
     return (
       <form 
       onSubmit={this.submitNewUser}>
+        { error !== '' && <h2>{error}</h2> }
         <input
           className='name' 
           onChange={this.updateValue}

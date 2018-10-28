@@ -18,9 +18,13 @@ export class SignIn extends Component {
     })
   }
 
-  loginUser = (e) => {
+  loginUser = async (e) => {
     e.preventDefault();
-    API.getUser(this.state)
+    try {
+      await API.getUser(this.state)
+    } catch (error) {
+
+    }
   }
 
   render() {

@@ -95,22 +95,32 @@ describe('API', () => {
         })
       ))
     });
+
     it('should call fetch with the correct params', () => {
       const url = 'http://localhost:3000/api/users/new'
       
       API.addUser(mock.newUser)
 
       expect(window.fetch).toHaveBeenCalledWith(url, mock.newOptions)
-    })
+    });
+
     it('should return status if user is added', async () => {
       const expected = 'New user created';
       const result = await API.addUser(mock.newUser);
 
       expect(result).toEqual(expected);
-    })
+    });
+    
     // it('should put new user name in local storage')
-    it('should throw an error if the user already exists', () => {
-      expect
-    })
+    it('should throw an error if the user already exists', async () => {
+      window.fetch = jest.fn(() => (Promise.resolve({
+        ok: false,
+        status: 500,
+      })));
+
+      const expected = Error('status was not ok, 500 error');
+
+      await expect(API.addUser(mock.newUser)).rejects.toEqual(expected);
+    });
   });
 });

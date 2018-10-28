@@ -64,7 +64,14 @@ export const addUser = async (user) => {
   }
 
   const response = await fetch(url, options);
-  const newUser = await response.json();
 
-  return newUser.message;
+  if (response.ok) {
+    const newUser = await response.json();
+
+    return newUser.message;
+  } else if (response.status === 500) {
+    throw new Error('status was not ok, 500 error');
+  } else {
+    throw new Error('status was not ok');
+  }
 }

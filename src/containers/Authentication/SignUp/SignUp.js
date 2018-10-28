@@ -21,6 +21,7 @@ export class SignUp extends Component {
 
   submitNewUser = (e) => {
     e.preventDefault();
+    debugger;
     API.addUser(this.state)
   }
 
@@ -30,24 +31,27 @@ export class SignUp extends Component {
       <form 
       onSubmit={this.submitNewUser}>
         <input
-          id='name' 
+          className='name' 
           onChange={this.updateValue}
           name="name" 
           value={name} 
           placeholder="Enter your name"/>
         <input 
-          id='email' 
+          className='email' 
           onChange={this.updateValue}
           name="email" 
           value={email} 
           placeholder="Enter your email"/>
         <input 
-          id='password' 
+          className='password' 
           onChange={this.updateValue}
           name="password" 
           value={password} 
           type="password" 
           placeholder="Enter your password"/>
+        <input 
+          type='submit'  
+          value='SignUp'/>
       </form>
     )
   }

@@ -1,7 +1,7 @@
 import { SignUp } from './SignUp.js';
 import React from 'react';
 import * as mock from '../../../util/mocks.js';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import * as API from '../../../util/helper'
 
 
@@ -20,7 +20,7 @@ describe('SignUp', () => {
     const spy = jest.spyOn(wrapper.instance(), 
     'updateValue');
     wrapper.instance().forceUpdate();
-    wrapper.find('#name').simulate('change', {
+    wrapper.find('.name').simulate('change', {
       target: {
         value: 'j',
         name: 'name',
@@ -47,4 +47,15 @@ describe('SignUp', () => {
 
     expect(API.addUser).toHaveBeenCalled();
   })
+  it('should display an error if email or password is wrong', () => {
+    API.addUser = jest.fn(() => Error('status was not ok, 500 error'));
+
+    wrapper.find('form').simulate('submit', {
+      preventDefault: () => {},
+    })
+
+    expect()
+  })
 });
+
+

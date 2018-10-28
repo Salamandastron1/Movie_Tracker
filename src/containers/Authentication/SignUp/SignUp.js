@@ -9,6 +9,7 @@ export class SignUp extends Component {
       email: '',
       password: '',
       error: '',
+      isLoggedIn: false,
     }
 
   }

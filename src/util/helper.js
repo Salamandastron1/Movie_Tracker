@@ -58,7 +58,6 @@ export const getUser = async (user) => {
   const url = 'http://localhost:3000/api/users';
   const options = makeOptions(user);
   const response = await fetch(url, options);
-  debugger;
   if(response.ok) {
     const existingUser = await response.json();
     const { name } = existingUser.data;

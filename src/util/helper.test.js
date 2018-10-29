@@ -47,10 +47,12 @@ describe('API', () => {
         overview: 'This movie is RAD!',
         release_date: '2018-9-11',
         favorited: false,
+        id: 4,
+        vote_average: 5,
       }]
       const result = await API.getMovieData();
 
-      expect(expected).toEqual(result);
+      expect(result).toEqual(expected);
 
     })
   });

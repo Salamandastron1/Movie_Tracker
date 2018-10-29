@@ -4,12 +4,13 @@ import { toggleFavorite } from '../../Action-creators/toggleFavorite';
 
 
 
-export const Card = ({ title , poster_path , overview , release_date , favorited }) => {
+export const Card = ({ title , poster_path , overview , release_date , favorited, toggleFavorites, id }) => {
+  debugger;
   return (
     <div>
       <h1>{title}</h1>
       <input
-       onClick={''}
+       onClick={() => toggleFavorites(id)}
        type='button'
        value='Favorite'/>
       <img src={'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + poster_path} alt={`This is the poster for the movie "${title}" in theaters ${release_date}.`} />
@@ -20,7 +21,7 @@ export const Card = ({ title , poster_path , overview , release_date , favorited
 }
 
 export const mapDispatchToProps = dispatch => ({
-  toggleFavorite: (id) => dispatch(toggleFavorite(id))
+  toggleFavorites: (id) => dispatch(toggleFavorite(id))
 })
 
 export default connect(null, mapDispatchToProps)(Card);

@@ -32,4 +32,15 @@ describe('MoviesReducer', () => {
 
     expect(moviesReducer(initialState, mockAction)).toEqual(expected);
   });
+  it('should toggle a favorite when type TOGGLE_FAVORITE is received', () => {
+    const initialState = [mocks.mockMovie, mocks.mockMovie2]
+    const expected = [mocks.mockMovie, mocks.mockFavorited]
+    const mockAction = {
+      type: 'TOGGLE_FAVORITE',
+      id: 9,
+    }
+    const result = moviesReducer(initialState, mockAction)
+
+    expect(result).toEqual(expected)
+  })
 })

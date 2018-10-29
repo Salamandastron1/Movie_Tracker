@@ -7,7 +7,7 @@ import { toggleFavorite } from '../../Action-creators/toggleFavorite';
 
 describe('Card', () => {
   it('should match snapshot', () => {
-    let movie = {
+    const movie = {
         title: 'Venom',
         poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
         overview: 'This movie is RAD!',
@@ -19,18 +19,13 @@ describe('Card', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('should call addFavorite on click', () => {
-
-  });
 });
 
 describe('mapDispatchToProps', () => {
   it('should call dispatch will all of the correct params', () => {
   const mockDispatch = jest.fn();
   const mappedDispatch = mapDispatchToProps(mockDispatch);
-  mappedDispatch.toggleFavorite(4);
+  mappedDispatch.toggleFavorites(4);
   expect(mockDispatch).toHaveBeenCalledWith(toggleFavorite(4))
-
   })
 })

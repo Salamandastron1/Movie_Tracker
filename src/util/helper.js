@@ -18,6 +18,7 @@ const cleanMovieData = (data) => {
     release_date: movie.release_date,
     favorited: false,
     id: movie.id,
+    vote_average: movie.vote_average,
   }))
 }
 

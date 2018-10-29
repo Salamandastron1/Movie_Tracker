@@ -13,6 +13,7 @@ export const mockResults = {
       vote_average: 5 ,
       overview: 'This movie is RAD!',
       release_date: '2018-9-11',
+      id: 4,
     }
   ] 
 }
@@ -23,8 +24,27 @@ export const mockMovie = {
       vote_average: 5 ,
       overview: 'This movie is RAD!',
       release_date: '2018-9-11',
+      favorited: false,
+      id: 4,
     }
-
+export const mockMovie2 = { 
+      poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
+      title: 'meow',
+      vote_average: 5 ,
+      overview: 'This movie is RAD!',
+      release_date: '2018-9-11',
+      favorited: false,
+      id: 9,
+    }
+export const mockFavorited = { 
+      poster_path: '2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg',
+      title: 'meow',
+      vote_average: 5 ,
+      overview: 'This movie is RAD!',
+      release_date: '2018-9-11',
+      favorited: true,
+      id: 9,
+    }
 export const mockState = { 
     movies: [
       { 

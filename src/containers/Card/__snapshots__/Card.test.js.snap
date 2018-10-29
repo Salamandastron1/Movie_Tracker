@@ -4,7 +4,7 @@ exports[`Card should match snapshot 1`] = `
 <div>
   <h1 />
   <input
-    onClick=""
+    onClick={[Function]}
     type="button"
     value="Favorite"
   />

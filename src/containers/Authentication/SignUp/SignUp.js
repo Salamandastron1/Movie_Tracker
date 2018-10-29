@@ -7,14 +7,14 @@ import { getName } from '../../../Action-creators/getName';
 import { logOut } from '../../../Action-creators/logOut';
 
 export class SignUp extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: '',
       email: '',
       password: '',
     }
-
+    console.log(connect)
   }
 
   updateValue = (e) => {
@@ -26,27 +26,27 @@ export class SignUp extends Component {
 
   submitNewUser = async (e) => {
     e.preventDefault();
-    const { name , email , password } = this.state;
     let currentUser;
+
     try {
       currentUser = await API.loginUser(this.state);
-      return currentUser;
+      this.props.loginUser(currentUser.id, currentUser.name);
     } catch (error) {
-      //this.props.setError(error);
+      this.props.setError(error.message);
     }
-    //this.props.loginUser(currentUser);
   }
 
   render() {
     const { name, email, password } = this.state;
-    const { error, id } = this.props;
+    const { error, id, logoutUser} = this.props;
 
     let form;
 
     if (id) {
       form = <input 
               type='button'
-              value='Sign Out' />
+              value='Sign Out' 
+              onClick={logoutUser}/>
     } else {
       form = (
         <form 
@@ -80,42 +80,19 @@ export class SignUp extends Component {
   }
 }
 
-export const mapStateToProps = (state) => {
-  return { id: state.id, error: state.error };
-}
+export const mapStateToProps = state => ({ id: state.id, error: state.error, name: state.name })
 
-export const mapDispatchToProps = (dispatch) => {
-  return { 
-    loginUser: (id, name) => {
-      dispatch(getId(id))
-      dispatch(getName(name))
-    },
-    logoutUser: () => {
-      dispatch(logOut())
-    },
-    setError: (error) => {
-      dispatch(errorReceived(error))
-    }
-  }
-}
+export const mapDispatchToProps = dispatch => ({ 
+      loginUser: (id, name) => {
+        dispatch(getId(id))
+        dispatch(getName(name))
+      },
+      logoutUser: () => {
+        dispatch(logOut())
+      },
+      setError: (error) => {
+        dispatch(errorReceived(error))
+      }
+    })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

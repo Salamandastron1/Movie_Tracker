@@ -30,9 +30,11 @@ export class SignUp extends Component {
     try {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
+      this.props.setError('');
     } catch (error) {
       this.props.setError(error.message);
     }
+    this.setState({ name: '', email: '', password: ''});
   }
 
   render() {

@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
 import SignUp from '../Authentication/SignUp/SignUp';
-import {SignIn} from '../Authentication/SignIn/SignIn'
+import SignIn from '../Authentication/SignIn/SignIn'
 
 class App extends Component {
 

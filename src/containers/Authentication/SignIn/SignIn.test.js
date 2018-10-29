@@ -1,9 +1,13 @@
-import { SignIn } from './SignIn.js';
+import { SignIn , mapStateToProps , mapDispatchToProps } from './SignIn.js';
 import React from 'react';
 import * as mock from '../../../util/mocks.js';
 import { shallow } from 'enzyme';
 import * as API from '../../../util/helper'
-
+import { errorReceived } from '../../../Action-creators/errorReceived';
+import { getId } from '../../../Action-creators/getId';
+import { getName } from '../../../Action-creators/getName';
+import { logOut } from '../../../Action-creators/logOut';
+import configureMockStore from 'redux-mock-store';
 
 describe('SignIn', () => {
   let wrapper;
@@ -47,4 +51,56 @@ describe('SignIn', () => {
 
     expect(API.loginUser).toHaveBeenCalled();
   })
+
+  describe('mapStateToProps', () => {
+    it('should return an object', () => {
+      const mockState = { 
+        name: 'Jessica', 
+        id: 9, 
+        movies: [], 
+        error: '' };
+      const expected = { 
+        id: 9 , 
+        error: '' , 
+        name: 'Jessica' };
+
+      const result = mapStateToProps(mockState);
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with all the correct params for loginUser', () => {
+      const mockDispatch = jest.fn();
+      const idAction = getId(5);
+      const nameAction = getName('Justin'); 
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.loginUser(5, 'Justin');
+
+      expect(mockDispatch).toHaveBeenCalledWith(idAction);
+      expect(mockDispatch).toHaveBeenCalledWith(nameAction);
+    });
+
+    it('should call dispatch with no params for logoutUser', () => {
+      const mockDispatch = jest.fn();
+      const logoutAction = logOut();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.logoutUser();
+
+      expect(mockDispatch).toHaveBeenCalledWith(logoutAction);
+    });
+
+    it('should call dispatch with the correct params for setError', () => {
+      const mockDispatch = jest.fn();
+      const errorAction = errorReceived('ERROR ERROR ERROR');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.setError('ERROR ERROR ERROR');
+
+      expect(mockDispatch).toHaveBeenCalledWith(errorAction);
+    });
+  });
 });

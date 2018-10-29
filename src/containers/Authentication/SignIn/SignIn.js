@@ -1,6 +1,10 @@
 import React, { Component }  from 'react';
 import * as API from '../../../util/helper';
 import { connect } from 'react-redux';
+import { errorReceived } from '../../../Action-creators/errorReceived';
+import { getId } from '../../../Action-creators/getId';
+import { getName } from '../../../Action-creators/getName';
+import { logOut } from '../../../Action-creators/logOut';
 
 export class SignIn extends Component {
   constructor() {
@@ -20,21 +24,19 @@ export class SignIn extends Component {
   }
 
   loginUser = async (e) => {
-    const { password, email } = this.state;
-    let currentUser;
     e.preventDefault();
+    let currentUser;
     try {
       currentUser = await API.loginUser(this.state);
-      return currentUser;
+      this.props.loginUser(currentUser.id, currentUser.name);
     } catch (error) {
-      //this.props.setError(error);
+      this.props.setError(error.message);
     }
-    //this.props.loginUser(currentUser);
   }
 
   render() {
-    const { email, password } = this.state
-    const { error, id } = this.props;
+    const { email, password } = this.state;
+    const { error, id, name, logoutUser} = this.props;
 
     let form;
 
@@ -69,6 +71,27 @@ export class SignIn extends Component {
   }
 }
 
-const mapStateToProps = () => {
-  
+export const mapStateToProps = state => {
+  return { 
+    id: state.id, 
+    error: state.error, 
+    name: state.name,
+  }
 }
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: (id, name) => {
+      dispatch(getId(id))
+      dispatch(getName(name))
+    },
+    logoutUser: () => {
+      dispatch(logOut())
+    },
+    setError: (error) => {
+      dispatch(errorReceived(error))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

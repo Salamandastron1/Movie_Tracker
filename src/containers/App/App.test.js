@@ -8,10 +8,16 @@ import configureMockStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 
 describe('App', () => {
+  let mockStore;
+  let initialState;
+  let store;
+  beforeEach(() => {
+    mockStore = configureMockStore()
+    initialState = {movies: []}
+    store = mockStore(initialState);
+  })
+
   it('renders without crashing', () => {
-    const mockStore = configureMockStore()
-    const initialState = {movies: []}
-    const store = mockStore(initialState);
     const div = document.createElement('div');
     ReactDOM.render(
     <Provider store={store}>
@@ -23,7 +29,7 @@ describe('App', () => {
   });
 
   it('should match the snapshot', () => {
-    const wrapper = shallow(<App /> )
+    const wrapper = shallow(<App store={store} /> )
 
     expect(wrapper).toMatchSnapshot();
   });

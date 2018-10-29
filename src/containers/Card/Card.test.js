@@ -2,6 +2,7 @@ import { Card } from './Card.js';
 import { mapDispatchToProps } from './Card.js';
 import React from 'react';
 import { shallow } from 'enzyme';
+import { toggleFavorite } from '../../Action-creators/toggleFavorite';
 
 
 describe('Card', () => {
@@ -24,7 +25,7 @@ describe('Card', () => {
   });
 });
 
-describe('maptDispatchToProps', () => {
+describe('mapDispatchToProps', () => {
   it('should call dispatch will all of the correct params', () => {
   const mockDispatch = jest.fn();
   const mappedDispatch = mapDispatchToProps(mockDispatch);

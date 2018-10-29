@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'http2';
+import { connect } from 'react-redux';
+import { toggleFavorite } from '../../Action-creators/toggleFavorite';
 
 
 

@@ -11,7 +11,7 @@ export class CardContainer extends Component {
       this.props.onload(initialMovieData)
       return initialMovieData;
     } catch (e) {
-      console.log(e.message);
+      throw Error(e.message);
     }
   }
 

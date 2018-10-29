@@ -14,7 +14,6 @@ export class SignUp extends Component {
       email: '',
       password: '',
     }
-    console.log(connect)
   }
 
   updateValue = (e) => {

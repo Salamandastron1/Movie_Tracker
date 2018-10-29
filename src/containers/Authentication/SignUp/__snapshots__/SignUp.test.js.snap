@@ -4,6 +4,7 @@ exports[`SignUp should match the snapshot 1`] = `
 <form
   onSubmit={[Function]}
 >
+  <h2 />
   <input
     className="name"
     name="name"

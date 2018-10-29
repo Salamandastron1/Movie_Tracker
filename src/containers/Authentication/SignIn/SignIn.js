@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import * as API from '../../../util/helper'
+import * as API from '../../../util/helper';
+import { connect } from 'react-redux';
 
 export class SignIn extends Component {
   constructor() {
@@ -36,7 +37,7 @@ export class SignIn extends Component {
     const { error, id } = this.props;
 
     let form;
-    
+
     if (id) {
       form = <input 
               type='button'
@@ -66,4 +67,8 @@ export class SignIn extends Component {
     }
     return form;
   }
+}
+
+const mapStateToProps = () => {
+  
 }

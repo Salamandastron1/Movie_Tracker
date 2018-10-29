@@ -4,6 +4,10 @@ exports[`SignIn should match the snapshot 1`] = `
 <form
   onSubmit={[Function]}
 >
+  <h2>
+     
+     
+  </h2>
   <input
     className="email"
     name="email"

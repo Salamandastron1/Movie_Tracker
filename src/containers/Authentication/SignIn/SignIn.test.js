@@ -39,12 +39,12 @@ describe('SignIn', () => {
 
     expect(spy).toHaveBeenCalled();
   })
-  it('should call getUser on submit', () => {
-    API.getUser = jest.fn()
+  it('should call loginUser on submit', () => {
+    API.loginUser = jest.fn()
     wrapper.find('form').simulate('submit', {
       preventDefault: () => {}
     });
 
-    expect(API.getUser).toHaveBeenCalled();
+    expect(API.loginUser).toHaveBeenCalled();
   })
 });

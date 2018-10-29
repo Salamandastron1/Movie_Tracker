@@ -17,10 +17,11 @@ export class CardContainer extends Component{
 
   render() {
     const { movies } = this.props;
-
+    
     const movieCards = movies.map(movie => {
       return <Card key={movie.id} {...movie} />
     })
+
     return (
       <div>
         {movieCards}

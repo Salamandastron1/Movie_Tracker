@@ -1,6 +1,5 @@
 import React from 'react'
-import CardContainer from './CardContainer'
-import {mapStateToProps, mapDispatchToProps} from './CardContainer'
+import { CardContainer, mapStateToProps, mapDispatchToProps} from './CardContainer'
 import * as mocks from '../../util/mocks';
 import {setMostRecent} from '../../Action-creators/SetMostRecent';
 import { shallow } from 'enzyme';

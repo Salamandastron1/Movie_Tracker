@@ -1,5 +1,10 @@
 import React, { Component }  from 'react';
-import * as API from '../../../util/helper'
+import * as API from '../../../util/helper';
+import { connect } from 'react-redux';
+import { errorReceived } from '../../../Action-creators/errorReceived';
+import { getId } from '../../../Action-creators/getId';
+import { getName } from '../../../Action-creators/getName';
+import { logOut } from '../../../Action-creators/logOut';
 
 export class SignUp extends Component {
   constructor() {
@@ -73,7 +78,44 @@ export class SignUp extends Component {
     }
     return form;
   }
-
-
-
 }
+
+export const mapStateToProps = (state) => {
+  return { id: state.id, error: state.error };
+}
+
+export const mapDispatchToProps = (dispatch) => {
+  return { 
+    loginUser: (id, name) => {
+      dispatch(getId(id))
+      dispatch(getName(name))
+    },
+    logoutUser: () => {
+      dispatch(logOut())
+    },
+    setError: (error) => {
+      dispatch(errorReceived(error))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -72,7 +72,7 @@ describe('API', () => {
     })
     it('should return is status is success', async () => {
       const result = await API.getUser(mock.user);
-      const expected = { name: 'Jessica', message: 'Retrieved ONE User' };
+      const expected = { name: 'Jessica' , id: 2 };
 
       expect(result).toEqual(expected);
     })
@@ -105,13 +105,12 @@ describe('API', () => {
     });
 
     it('should return status if user is added', async () => {
-      const expected = 'New user created';
+      const expected = { id: 4, name: 'Tim'};
       const result = await API.addUser(mock.newUser);
 
       expect(result).toEqual(expected);
     });
     
-    // it('should put new user name in local storage')
     it('should throw an error if the user already exists', async () => {
       window.fetch = jest.fn(() => (Promise.resolve({
         ok: false,

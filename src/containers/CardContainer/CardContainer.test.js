@@ -1,6 +1,5 @@
 import React from 'react'
-import CardContainer from './CardContainer'
-import {mapStateToProps, mapDispatchToProps} from './CardContainer'
+import { CardContainer, mapStateToProps, mapDispatchToProps} from './CardContainer'
 import * as mocks from '../../util/mocks';
 import {setMostRecent} from '../../Action-creators/SetMostRecent';
 import { shallow } from 'enzyme';
@@ -9,10 +8,10 @@ import configureMockStore from 'redux-mock-store';
 describe('CardContainer', () => {
   it('should match the snapshot', () => {
     const mockStore = configureMockStore()
-    const initialState = {movies: []}
+    const initialState = {movies: [{}, {}]}
     const store = mockStore(initialState);
 
-    const wrapper = shallow(<CardContainer store={store} />);
+    const wrapper = shallow(<CardContainer store={store} movies={[{id:1},{id:2},{id:3}]} />);
 
     expect(wrapper).toMatchSnapshot();
   });

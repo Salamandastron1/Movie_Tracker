@@ -40,3 +40,53 @@ export const mockState = {
 
 export const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
 
+export const userResponse = {
+  data: {
+    id: 2,
+    name: 'Jessica',
+    password: 'passw0rd',
+    email: 'jerick999@gmail.com',
+  },
+  message: 'Retrieved ONE User',
+  status: 'success',
+}
+
+export const user = {
+  password: 'passw0rd',
+  email: 'jerick999@gmail.com',
+}
+
+export const options = {
+  method: 'POST',
+  body: JSON.stringify({
+  password: 'passw0rd',
+  email: 'jerick999@gmail.com',
+    }),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+}
+
+export const newUserResponse = {
+  id: 4,
+  message: "New user created",
+  status: "success",
+}
+
+export const newUser = {
+  name: 'Tim', 
+  password: 'm30w',
+  email: 'tag.garrity@gmail.com', 
+}
+
+export const newOptions = {
+  method: 'POST',
+  body: JSON.stringify({
+  name: 'Tim',
+  password: 'm30w',
+  email: 'tag.garrity@gmail.com',
+    }),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+}

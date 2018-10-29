@@ -1,4 +1,4 @@
-import * as mocks from '../util/mocks';
+import  * as mocks from '../util/mocks';
 import {setMostRecent} from './setMostRecent'
 
 describe('setMostRecent', () => {

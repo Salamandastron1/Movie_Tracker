@@ -3,6 +3,11 @@
 exports[`Card should match snapshot 1`] = `
 <div>
   <h1 />
+  <input
+    onClick=""
+    type="button"
+    value="Favorite"
+  />
   <img
     alt="This is the poster for the movie \\"undefined\\" in theaters undefined."
     src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/undefined"

@@ -4,7 +4,7 @@ import {setMostRecent} from '../../Action-creators/setMostRecent';
 import * as API from '../../util/helper';
 import Card from '../Card/Card';
 
-export class CardContainer extends Component{
+export class CardContainer extends Component {
   componentDidMount = async () => {
     try {
       const initialMovieData = await API.getMovieData();
@@ -17,16 +17,19 @@ export class CardContainer extends Component{
 
   render() {
     const { movies } = this.props;
-    
-    const movieCards = movies.map(movie => {
-      return <Card key={movie.id} {...movie} />
-    })
+    if(movies){
+      const movieCards = movies.map(movie => {
+        return <Card key={movie.id} {...movie} />
+      })
+      return (
+        <div>
+          {movieCards}
+        </div>
+      ) 
+    } else {
+      return null;
+    }
 
-    return (
-      <div>
-        {movieCards}
-      </div>
-    )
   } 
 }
 

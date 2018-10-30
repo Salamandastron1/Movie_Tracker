@@ -32,7 +32,6 @@ export class SignIn extends Component {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
       const faves = await API.getFavorites(currentUser.id);
-      console.log('faves',faves)
         faves.forEach(fave => {
           const isIncluded = this.props.movies.some(movie => {
             return movie.id === fave.movie_id

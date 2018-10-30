@@ -152,7 +152,7 @@ describe('API', () => {
     })
     
     it('should call fetch with the correct params', () => {
-     const expected = 'http://locahost:3000/api/user/18/favorites';
+     const expected = 'http://localhost:3000/api/users/18/favorites';
 
      API.getFavorites(18);
      expect(window.fetch).toHaveBeenCalledWith(expected);

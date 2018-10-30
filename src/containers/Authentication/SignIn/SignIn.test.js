@@ -7,6 +7,8 @@ import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
 import configureMockStore from 'redux-mock-store';
+import { toggleFavorite } from '../../../Action-creators/toggleFavorite';
+import { setMostRecent } from '../../../Action-creators/setMostRecent';
 
 describe('SignIn', () => {
   let wrapper;
@@ -60,7 +62,8 @@ describe('SignIn', () => {
         error: '' };
       const expected = { 
         id: 9 , 
-        error: '' , 
+        error: '' ,
+        movies: [],
         name: 'Jessica' };
 
       const result = mapStateToProps(mockState);
@@ -81,7 +84,34 @@ describe('SignIn', () => {
       expect(mockDispatch).toHaveBeenCalledWith(idAction);
       expect(mockDispatch).toHaveBeenCalledWith(nameAction);
     });
+    it('should call dispatch with correct params for updateFavorite', () => {
+      const mockDispatch = jest.fn();
+      const toggleAction = toggleFavorite(5)
+      const mappedProps = mapDispatchToProps(mockDispatch)
 
+      mappedProps.updateFavorite(5)
+
+      expect(mockDispatch).toHaveBeenCalledWith(toggleAction)
+    })
+    it('should call dispatch with correct params for pushFavorite', () => {
+      const movie = {
+        id: 10,
+        movie_id: 260513,
+        overview: 'whatever you want it to be',
+        poster_path: '/whatevs.jpg',
+        release_date: '2018-06-14',
+        title: 'Incredibles 2',
+        user_id: 18, 
+        vote_average: '7.6'
+      }
+      const mockDispatch = jest.fn();
+      const setAction = setMostRecent([movie])
+      const mappedProps = mapDispatchToProps(mockDispatch)
+
+      mappedProps.pushFavorite([movie])
+
+      expect(mockDispatch).toHaveBeenCalledWith(setAction)
+    })
     it('should call dispatch with the correct params for setError', () => {
       const mockDispatch = jest.fn();
       const errorAction = errorReceived('ERROR ERROR ERROR');

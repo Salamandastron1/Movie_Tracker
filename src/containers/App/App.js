@@ -14,7 +14,6 @@ class App extends Component {
 
   render() {
     const { id, name, logoutUser, showFavorites, favorites, showAll } = this.props;
-    console.log(this.props)
     return (
       <main className="App">
         <header>
@@ -37,8 +36,8 @@ class App extends Component {
           <Route exact path='/login' component={ SignIn } />
           <Route exact path='/signup' component={ SignUp } />
         </header>
-        <Route exact path='/' component={ CardContainer }/>
-        <Route exact path='/favorites' component={CardContainer} />
+        <Route path='/' component={ CardContainer }/>
+        {/*<Route exact path='/favorites' component={CardContainer} />*/}
       </main>
     );
   }

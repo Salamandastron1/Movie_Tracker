@@ -17,27 +17,39 @@ export class CardContainer extends Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies , favorites , location } = this.props;
     let movieCards;
-    if(movies){
-       movieCards = movies.map(movie => {
-        return <Card key={movie.id} {...movie} />
-      })
-      return (
-        <section className='card-container'>
-          {movieCards}
-        </section>
-      ) 
-    } else {
-      return null;
+    switch (location.pathname) {
+      case '/':
+        movieCards = movies.map(movie => {
+          return <Card key={movie.id} {...movie} />
+        })
+        break;
+      case '/favorites':
+        const filteredMovies = movies.filter(movie => {
+          return movie.favorited
+        })
+        movieCards = filteredMovies.map(movie => {
+          return <Card key={movie.id} {...movie} />
+        })
+      break;
+      default:
+        movieCards = movies.map(movie => {
+          return <Card key={movie.id} {...movie} />
+        })
     }
-
+    return (
+      <section className='card-container'>
+        {movieCards}
+      </section>
+    )
   } 
 }
 
 
 export const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites,
 })
 
 export const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import * as API from '../../../util/helper';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
@@ -67,6 +68,9 @@ export class SignIn extends Component {
           <input 
             type='submit'
             value='Sign In' />
+          <NavLink to='/signup'>
+            Sign up 
+          </NavLink>
         </form>)
     }
     return form;

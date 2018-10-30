@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
 import SignUp from '../Authentication/SignUp/SignUp';
-import SignIn from '../Authentication/SignIn/SignIn'
+import SignIn from '../Authentication/SignIn/SignIn';
 
 class App extends Component {
 
@@ -13,9 +13,12 @@ class App extends Component {
     return (
       <div className="App">
         {id ? <h2>{`Welcome back, ${name}!`}</h2> : <h2>Please sign in</h2>}
-        <SignIn />
-        <SignUp />
-        <Route exact path='/' component={ CardContainer }/>
+        <NavLink to='/login'>
+          Login 
+        </NavLink>
+        <Route path='/login' component={ SignIn } />
+        <Route exact path='/signup' component={ SignUp } />
+        <Route path='/' component={ CardContainer }/>
       </div>
     );
   }

@@ -24,7 +24,7 @@ export const postFavorites = (userId, movie, favorited) => {
   } else {
     url = `http://localhost:3000/api/users/${userId}/favorites/${movie.id}`
     options = {
-      method: 'POST',
+      method: 'DELETE',
     }
   }
   return async (dispatch) => {

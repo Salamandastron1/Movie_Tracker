@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     const { id, name, logoutUser } = this.props;
     return (
-      <div className="App">
+      <main className="App">
         <header>
           <h1 className='title'>Movie Tracker</h1>
           {id ? <h2>{`Welcome, ${name}!`}</h2> : <h2>Please sign in</h2>}
@@ -24,7 +24,7 @@ class App extends Component {
           <Route exact path='/signup' component={ SignUp } />
         </header>
         <Route path='/' component={ CardContainer }/>
-      </div>
+      </main>
     );
   }
 }

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {setMostRecent} from '../../Action-creators/setMostRecent';
 import * as API from '../../util/helper';
 import Card from '../Card/Card';
+import './CardContainer.css'
 
 export class CardContainer extends Component {
   componentDidMount = async () => {
@@ -22,9 +23,9 @@ export class CardContainer extends Component {
         return <Card key={movie.id} {...movie} />
       })
       return (
-        <div>
+        <section className='card-container'>
           {movieCards}
-        </div>
+        </section>
       ) 
     } else {
       return null;

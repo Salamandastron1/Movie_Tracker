@@ -4,7 +4,9 @@
   'a a b'
   'c c c'
   'd d d '
-  'e . .'
+  'e . .';
+  grid-template-rows: -webitmin-min-content;
+  grid-template-rows: min-content;
 }
 .movie-title {
   white-space: nowrap;

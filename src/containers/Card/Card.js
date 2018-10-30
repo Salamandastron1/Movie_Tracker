@@ -12,10 +12,11 @@ export const Card = ({ title , id , postFavorites , poster_path , release_date ,
       <input
        onClick={() => postFavorites(user_id, movie, favorited)}
        type='button'
-       value='Favorite'/>
+       value='Favorite'
+       className='button'/>
       <img src={'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + poster_path} alt={`This is the poster for the movie "${title}" in theaters ${release_date}.`} />
-      <p>{overview}</p>
-      <p>{release_date}</p>
+      <p className='overview'>{overview}</p>
+      <p className='release_date'>{release_date}</p>
     </div>
   )
 }

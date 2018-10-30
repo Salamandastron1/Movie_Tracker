@@ -1,6 +1,32 @@
+.card {
+  display: grid;
+  grid-template-areas: 
+  'a a b'
+  'c c c'
+  'd d d '
+  'e . .'
+}
 .movie-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 1em;
+  grid-area: a;
+  margin: 0;
+}
+
+.button {
+  grid-area: b;
+}
+
+img {
+  grid-area: c;
+}
+
+.overview {
+  grid-area: d;
+}
+
+.release_date {
+  grid-area: e;
 }

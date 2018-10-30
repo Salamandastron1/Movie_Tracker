@@ -31,11 +31,11 @@ export class SignUp extends Component {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
       this.props.setError('');
+      this.props.history.push('/');
     } catch (error) {
       this.props.setError(error.message);
     }
     this.setState({ name: '', email: '', password: ''});
-    this.props.history.push('/');
   }
 
   render() {

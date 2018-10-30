@@ -14,6 +14,7 @@ describe('Card', () => {
         overview: 'This movie is RAD!',
         release_date: '2018-9-11',
         favorited: false,
+        vote_average: 5,
       }
 
     const wrapper = shallow( <Card movie={movie} /> );

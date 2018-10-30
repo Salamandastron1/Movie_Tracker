@@ -4,7 +4,7 @@ import { errorReceived } from '../Action-creators/errorReceived';
 export const postFavorites = (userId, movie, favorited) => {
   let url;
   let options;
-  if(!favorited) {
+  if(!favorited && userId) {
     url = 'http://localhost:3000/api/users/favorites/new'
     options = {
       method: 'POST',
@@ -21,10 +21,14 @@ export const postFavorites = (userId, movie, favorited) => {
           'Content-Type': 'application/json'
       },
     }
-  } else {
+  } else if (userId) {
     url = `http://localhost:3000/api/users/${userId}/favorites/${movie.id}`
     options = {
       method: 'DELETE',
+    }
+  } else {
+    return () => {
+      alert('Please log in to favorite a movie.');
     }
   }
   return async (dispatch) => {

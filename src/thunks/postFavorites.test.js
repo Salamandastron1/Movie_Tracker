@@ -54,6 +54,19 @@ describe('postFavorites', () => {
     }
   });
 
+  it('should not call fetch or dispatch or toggleFavorite if the user is not signed in', () => {
+    window.alert = jest.fn();
+    const thunk = postFavorites(0, mockMovie, false);
+
+    thunk(mockDispatch);
+
+    expect(window.fetch).not.toHaveBeenCalled();
+    expect(mockDispatch).not.toHaveBeenCalled();
+    expect(toggleFavorite).not.toHaveBeenCalled();
+    expect(errorReceived).not.toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalledWith('Please log in to favorite a movie.');
+  });
+
   it('should call dispatch with toggleFavorite', async () => {
     const thunk = postFavorites(mockUserId, mockMovie);
 
@@ -61,20 +74,21 @@ describe('postFavorites', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith(toggleFavorite(12345));
   });
-  it('should call fetch with the correct params if favorited is true', () => {
 
+  it('should call fetch with the correct params if favorited is true', () => {
     const thunk = postFavorites(mockUserId ,mockMovie, true);
+
+    mockUrl = `http://localhost:3000/api/users/${mockUserId}/favorites/${mockMovie.id}`
+    thunk(mockDispatch);
+
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl, {method: 'DELETE'})
+  });
+  it('should call fetch with the correct params if favorited false', () => {
+    const thunk = postFavorites(mockUserId ,mockMovie, false);
 
     thunk(mockDispatch);
 
     expect(window.fetch).toHaveBeenCalledWith(mockUrl, mockOptions)
-  })
-  it('should call fetch with the correct params if favorited false', () => {
-    const thunk = postFavorites(mockUserId ,mockMovie, false);
-    mockUrl = `http://localhost:3000/api/users/${mockUserId}/favorites/${mockMovie.id}`
-    thunk(mockDispatch);
-
-    expect(window.fetch).toHaveBeenCalledWith(mockUrl, {method: 'POST'})
   })
   it('should toggleFavorite if response is okay', () => {
     const thunk = postFavorites(mockUserId ,mockMovie, true); 

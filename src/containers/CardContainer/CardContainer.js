@@ -18,8 +18,9 @@ export class CardContainer extends Component {
 
   render() {
     const { movies } = this.props;
+    let movieCards;
     if(movies){
-      const movieCards = movies.map(movie => {
+       movieCards = movies.map(movie => {
         return <Card key={movie.id} {...movie} />
       })
       return (

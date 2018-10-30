@@ -20,6 +20,7 @@ class App extends Component {
           {!id ? 
             <NavLink className='log-link' to='/login'>Login</NavLink> : 
             <NavLink className='log-link' to='/' onClick={logoutUser}>Sign Out</NavLink>}
+          {id ? <NavLink to='/favorites'>Favorites</NavLink>: null}
           <Route exact path='/login' component={ SignIn } />
           <Route exact path='/signup' component={ SignUp } />
         </header>
@@ -35,7 +36,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logOut())
+  logoutUser: () => dispatch(logOut()),
+  showFavorites: () => dispatch(showFavorites())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

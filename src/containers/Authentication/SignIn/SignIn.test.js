@@ -6,7 +6,6 @@ import * as API from '../../../util/helper'
 import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
-import { logOut } from '../../../Action-creators/logOut';
 import configureMockStore from 'redux-mock-store';
 
 describe('SignIn', () => {
@@ -81,16 +80,6 @@ describe('SignIn', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith(idAction);
       expect(mockDispatch).toHaveBeenCalledWith(nameAction);
-    });
-
-    it('should call dispatch with no params for logoutUser', () => {
-      const mockDispatch = jest.fn();
-      const logoutAction = logOut();
-      const mappedProps = mapDispatchToProps(mockDispatch);
-
-      mappedProps.logoutUser();
-
-      expect(mockDispatch).toHaveBeenCalledWith(logoutAction);
     });
 
     it('should call dispatch with the correct params for setError', () => {

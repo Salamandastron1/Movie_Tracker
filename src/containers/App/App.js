@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
 import SignUp from '../Authentication/SignUp/SignUp';
-import SignIn from '../Authentication/SignIn/SignIn'
+import SignIn from '../Authentication/SignIn/SignIn';
+import { logOut } from '../../Action-creators/logOut';
+import './App.css'
 
 class App extends Component {
 
   render() {
-    const { id , name } = this.props;
+    const { id, name, logoutUser } = this.props;
     return (
-      <div className="App">
-        {id ? <h2>{`Welcome back, ${name}!`}</h2> : <h2>Please sign in</h2>}
-        <SignIn />
-        <SignUp />
-        <Route exact path='/' component={ CardContainer }/>
-      </div>
+      <main className="App">
+        <header>
+          <h1 className='title'>Movie Tracker</h1>
+          {id ? <h2>{`Welcome, ${name}!`}</h2> : <h2>Please sign in</h2>}
+          {!id ? 
+            <NavLink className='log-link' to='/login'>Login</NavLink> : 
+            <NavLink className='log-link' to='/' onClick={logoutUser}>Sign Out</NavLink>}
+          <Route exact path='/login' component={ SignIn } />
+          <Route exact path='/signup' component={ SignUp } />
+        </header>
+        <Route path='/' component={ CardContainer }/>
+      </main>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   id: state.id,
   name: state.name,
 })
 
-export default connect(mapStateToProps , null)(App);
+export const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logOut())
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

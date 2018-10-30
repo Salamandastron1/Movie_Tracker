@@ -31,5 +31,12 @@ exports[`SignUp should match the snapshot 1`] = `
     type="submit"
     value="Sign Up"
   />
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    to="/login"
+  >
+    Sign In
+  </NavLink>
 </form>
 `;

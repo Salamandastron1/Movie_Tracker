@@ -1,0 +1,27 @@
+header {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  grid-template-areas: 
+  'b a .'
+  'c . .'
+  'd . .'
+}
+.title {
+  grid-area: a;
+  margin: 0;
+  justify-self: center;
+}
+h2 {
+  margin: 0;
+  grid-area: b;
+}
+
+.log-link {
+  grid-area: c;
+}
+
+form {
+  grid-area: d;
+}

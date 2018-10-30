@@ -6,6 +6,7 @@ import './App.css';
 import SignUp from '../Authentication/SignUp/SignUp';
 import SignIn from '../Authentication/SignIn/SignIn';
 import { logOut } from '../../Action-creators/logOut';
+import './App.css'
 
 class App extends Component {
 
@@ -13,10 +14,15 @@ class App extends Component {
     const { id, name, logoutUser } = this.props;
     return (
       <div className="App">
-        {id ? <h2>{`Welcome, ${name}!`}</h2> : <h2>Please sign in</h2>}
-        {!id ? <NavLink to='/login'>Login</NavLink> : <NavLink to='/' onClick={logoutUser}>Sign Out</NavLink>}
-        <Route exact path='/login' component={ SignIn } />
-        <Route exact path='/signup' component={ SignUp } />
+        <header>
+          <h1 className='title'>Movie Tracker</h1>
+          {id ? <h2>{`Welcome, ${name}!`}</h2> : <h2>Please sign in</h2>}
+          {!id ? 
+            <NavLink className='log-link' to='/login'>Login</NavLink> : 
+            <NavLink className='log-link' to='/' onClick={logoutUser}>Sign Out</NavLink>}
+          <Route exact path='/login' component={ SignIn } />
+          <Route exact path='/signup' component={ SignUp } />
+        </header>
         <Route path='/' component={ CardContainer }/>
       </div>
     );

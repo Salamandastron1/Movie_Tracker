@@ -138,21 +138,30 @@ describe('API', () => {
         user_id: 18, 
         vote_average: '7.6'
       }
+
       mockResponse = {
         data: [movie],
         message: 'Retreived All favorites',
         status: 'success'
       }
+
       window.fetch = jest.fn(() =>  Promise.resolve({ 
         ok: true,
-        json: () => Promise.resolve({mockResponse})
+        json: () => Promise.resolve(mockResponse)
        }))
-  })
+    })
+    
     it('should call fetch with the correct params', () => {
      const expected = 'http://locahost:3000/api/user/18/favorites';
 
      API.getFavorites(18);
      expect(window.fetch).toHaveBeenCalledWith(expected);
+    })
+    it('should return an array of movies', async () => {
+      const expected = [movie];
+      const result = await API.getFavorites(18);
+
+      expect(result).toEqual(expected);
     })
   })
 });

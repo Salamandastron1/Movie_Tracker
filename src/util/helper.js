@@ -99,5 +99,8 @@ export const loginUser = async (user) => {
 export const getFavorites = async id => {
   const url = `http://locahost:3000/api/user/${id}/favorites`
   const response = await fetch(url);
-  
+  if(response.ok) {
+    const favoriteMovies = await response.json();
+    return favoriteMovies.data;
+  }
 }

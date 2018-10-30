@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should match the snapshot 1`] = `
-
-<div
-  className="App"
->
-  <SignIn />
-  <Connect(SignUp) />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/"
-  />
-</div>
+<Route>
+  <Component />
+</Route>
 `;

@@ -12,6 +12,7 @@ describe('postFavorites', () => {
   let mockUserId;
   let mockMovie;
   let mockResponse;
+  let mockOptions;
 
   beforeEach(() => {
     mockResponse = {
@@ -26,8 +27,23 @@ describe('postFavorites', () => {
       )
     )
     mockUrl = 'http://localhost:3000/api/users/favorites/new';
+    mockOptions = {
+      method: 'POST',
+      body: JSON.stringify({
+        movie_id: 12345,
+        user_id: 12,
+        title: 'Blastoise',
+        poster_path: 'movieposter.jpg', 
+        release_date: '12-12-1212',
+        vote_average: 5, 
+        overview: 'In a world where turtles must take their protection into their own shells, one turtle resorts to cannons first.'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }
     mockDispatch = jest.fn();
-    mockUserId = 22;
+    mockUserId = 12;
     mockMovie = {
       id: 12345,
       title: 'Blastoise',
@@ -45,16 +61,23 @@ describe('postFavorites', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith(toggleFavorite(12345));
   });
-  it('should call fetch with the correct params', () => {
+  it('should call fetch with the correct params if favorited is true', () => {
 
-    const thunk = postFavorites(mockUserId ,mockMovie);
+    const thunk = postFavorites(mockUserId ,mockMovie, true);
 
     thunk(mockDispatch);
 
-    expect(window.fetch).toHaveBeenCalledWith(mockUrl)
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl, mockOptions)
+  })
+  it('should call fetch with the correct params if favorited false', () => {
+    const thunk = postFavorites(mockUserId ,mockMovie, false);
+    mockUrl = `http://localhost:3000/api/users/${mockUserId}/favorites/${mockMovie.id}`
+    thunk(mockDispatch);
+
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl, {method: 'POST'})
   })
   it('should toggleFavorite if response is okay', () => {
-    const thunk = postFavorites(mockUserId ,mockMovie); 
+    const thunk = postFavorites(mockUserId ,mockMovie, true); 
 
     thunk(mockDispatch)
 

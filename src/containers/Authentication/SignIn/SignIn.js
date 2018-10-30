@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom'
 import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
+import { toggleFavorite } from '../../../Action-creators/toggleFavorite';
+import { setMostRecent } from '../../../Action-creators/setMostRecent';
+
 
 export class SignIn extends Component {
   constructor() {
@@ -28,15 +31,29 @@ export class SignIn extends Component {
     try {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
-      const faves = API.getFavorites(currentUser.id);
-        faves.forEach(faves => {
-          if(this.props.movies.some( ( ) => {
-            
-          }))
+      const faves = await API.getFavorites(currentUser.id);
+      console.log('faves',faves)
+        faves.forEach(fave => {
+          const isIncluded = this.props.movies.some(movie => {
+            return movie.id === fave.movie_id
+          })
+          if(isIncluded) {
+            this.props.updateFavorite(fave.movie_id)
+          } else {
+            const oldFave = {
+              title: fave.title,
+              poster_path: fave.poster_path,
+              overview: fave.overview,
+              release_date: fave.release_date,
+              favorited: true,
+              id: fave.movie_id,
+              vote_average: fave.vote_average,
+            }
+            this.props.pushFavorite([oldFave])
+          }
         })
       this.props.setError('');
       this.props.history.push('/');
-      this.setState({ email: '', password: ''});
     } catch (error) {
       this.props.setError(error.message);
     }
@@ -79,6 +96,7 @@ export const mapStateToProps = state => {
     id: state.id, 
     error: state.error, 
     name: state.name,
+    movies: state.movies
   }
 }
 
@@ -90,6 +108,12 @@ export const mapDispatchToProps = dispatch => {
     },
     setError: (error) => {
       dispatch(errorReceived(error))
+    },
+    updateFavorite: (id) => {
+      dispatch(toggleFavorite(id))
+    },
+    pushFavorite: (fave) => {
+      dispatch(setMostRecent(fave))
     }
   }
 }

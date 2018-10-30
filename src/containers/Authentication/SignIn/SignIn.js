@@ -13,7 +13,6 @@ export class SignIn extends Component {
       email: '',
       password: '',
     }
-
   }
 
   updateValue = (e) => {
@@ -31,10 +30,10 @@ export class SignIn extends Component {
       this.props.loginUser(currentUser.id, currentUser.name);
       this.props.setError('');
       this.props.history.push('/');
+      this.setState({ email: '', password: ''});
     } catch (error) {
       this.props.setError(error.message);
     }
-    this.setState({ email: '', password: ''});
   }
 
   render() {

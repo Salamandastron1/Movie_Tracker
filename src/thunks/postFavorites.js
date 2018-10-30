@@ -4,7 +4,7 @@ import { errorReceived } from '../Action-creators/errorReceived';
 export const postFavorites = (userId, movie, favorited) => {
   let url;
   let options;
-  if(favorited) {
+  if(!favorited) {
     url = 'http://localhost:3000/api/users/favorites/new'
     options = {
       method: 'POST',

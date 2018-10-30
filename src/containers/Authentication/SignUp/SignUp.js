@@ -32,10 +32,10 @@ export class SignUp extends Component {
       this.props.loginUser(currentUser.id, currentUser.name);
       this.props.setError('');
       this.props.history.push('/');
+      this.setState({ name: '', email: '', password: ''});
     } catch (error) {
       this.props.setError(error.message);
     }
-    this.setState({ name: '', email: '', password: ''});
   }
 
   render() {

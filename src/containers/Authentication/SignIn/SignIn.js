@@ -29,6 +29,7 @@ export class SignIn extends Component {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
       this.props.setError('');
+      //API.
       this.props.history.push('/');
       this.setState({ email: '', password: ''});
     } catch (error) {

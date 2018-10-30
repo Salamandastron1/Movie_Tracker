@@ -28,8 +28,13 @@ export class SignIn extends Component {
     try {
       currentUser = await API.loginUser(this.state);
       this.props.loginUser(currentUser.id, currentUser.name);
+      const faves = API.getFavorites(currentUser.id);
+        faves.forEach(faves => {
+          if(this.props.movies.some( ( ) => {
+            
+          }))
+        })
       this.props.setError('');
-      //API.
       this.props.history.push('/');
       this.setState({ email: '', password: ''});
     } catch (error) {

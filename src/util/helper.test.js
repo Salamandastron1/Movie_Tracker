@@ -87,7 +87,7 @@ describe('API', () => {
 
       await expect(API.getUser(mock.user)).rejects.toEqual(expected)    
     })
-  })
+  });
   describe('addUser', () => {
     beforeEach(() => {
       window.fetch = jest.fn(() => (
@@ -123,5 +123,18 @@ describe('API', () => {
 
       await expect(API.addUser(mock.newUser)).rejects.toEqual(expected);
     });
+  });
+  describe('addFavorite', () => {
+    beforeEach(() => {
+      window.fetch = jest.fn(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve()
+        })
+      });
+    });
+    it('should call fetch with the correct params', () => {
+
+    })
   });
 });

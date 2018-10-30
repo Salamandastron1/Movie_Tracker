@@ -1,10 +1,10 @@
 import React, { Component }  from 'react';
+import { NavLink } from 'react-router-dom';
 import * as API from '../../../util/helper';
 import { connect } from 'react-redux';
 import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
-import { logOut } from '../../../Action-creators/logOut';
 
 export class SignUp extends Component {
   constructor(props) {
@@ -35,49 +35,44 @@ export class SignUp extends Component {
       this.props.setError(error.message);
     }
     this.setState({ name: '', email: '', password: ''});
+    this.props.history.push('/');
   }
 
   render() {
     const { name, email, password } = this.state;
-    const { error, id, logoutUser} = this.props;
+    const { error, id } = this.props;
 
-    let form;
-
-    if (id) {
-      form = <input 
-              type='button'
-              value='Sign Out' 
-              onClick={logoutUser}/>
-    } else {
-      form = (
-        <form 
-          onSubmit={this.submitNewUser}>
-            { error !== '' && <h2>{error}</h2> }
-            <input
-              className='name' 
-              onChange={this.updateValue}
-              name="name" 
-              value={name} 
-              placeholder="Enter your name"/>
-            <input 
-              className='email' 
-              onChange={this.updateValue}
-              name="email" 
-              value={email} 
-              placeholder="Enter your email"/>
-            <input 
-              className='password' 
-              onChange={this.updateValue}
-              name="password" 
-              value={password} 
-              type="password" 
-              placeholder="Enter your password"/>
-            <input 
-              type='submit'  
-              value='Sign Up'/>
-          </form>)
-    }
-    return form;
+    return (
+      <form 
+        onSubmit={this.submitNewUser}>
+        { error !== '' && <h2>{error}</h2> }
+        <input
+          className='name' 
+          onChange={this.updateValue}
+          name="name" 
+          value={name} 
+          placeholder="Enter your name"/>
+        <input 
+          className='email' 
+          onChange={this.updateValue}
+          name="email" 
+          value={email} 
+          placeholder="Enter your email"/>
+        <input 
+          className='password' 
+          onChange={this.updateValue}
+          name="password" 
+          value={password} 
+          type="password" 
+          placeholder="Enter your password"/>
+        <input 
+          type='submit'  
+          value='Sign Up'/>
+        <NavLink to='/login'>
+          Sign In
+        </NavLink>
+      </form>
+    )
   }
 }
 
@@ -87,9 +82,6 @@ export const mapDispatchToProps = dispatch => ({
       loginUser: (id, name) => {
         dispatch(getId(id))
         dispatch(getName(name))
-      },
-      logoutUser: () => {
-        dispatch(logOut())
       },
       setError: (error) => {
         dispatch(errorReceived(error))

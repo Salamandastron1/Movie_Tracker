@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
-import { logOut } from '../../../Action-creators/logOut';
 
 export class SignIn extends Component {
   constructor() {
@@ -35,45 +34,38 @@ export class SignIn extends Component {
       this.props.setError(error.message);
     }
     this.setState({ email: '', password: ''});
+    this.props.history.push('/');
   }
 
   render() {
     const { email, password } = this.state;
-    const { error, id, name, logoutUser} = this.props;
+    const { error, id, name } = this.props;
 
-    let form;
-
-    if (id) {
-      form = <input 
-              type='button'
-              value='Sign Out' />
-    } else {
-      form = (
-        <form 
-          onSubmit={this.loginUser}>
-          { error !== '' && <h2> { error } </h2> }
-          <input 
-            className='email' 
-            onChange={this.updateValue}
-            name="email" 
-            value={email} 
-            placeholder="Enter your email"/>
-          <input 
-            className='password' 
-            onChange={this.updateValue}
-            name="password" 
-            value={password} 
-            type="password" 
-            placeholder="Enter your password"/>
-          <input 
-            type='submit'
-            value='Sign In' />
-          <NavLink to='/signup'>
-            Sign up 
-          </NavLink>
-        </form>)
-    }
-    return form;
+    return (
+      <form 
+        onSubmit={this.loginUser}>
+        { error !== '' && <h2> { error } </h2> }
+        <input 
+          className='email' 
+          onChange={this.updateValue}
+          name="email" 
+          value={email} 
+          placeholder="Enter your email"/>
+        <input 
+          className='password' 
+          onChange={this.updateValue}
+          name="password" 
+          value={password} 
+          type="password" 
+          placeholder="Enter your password"/>
+        <input 
+          type='submit'
+          value='Sign In' />
+        <NavLink to='/signup'>
+          Sign up 
+        </NavLink>
+      </form>
+    )
   }
 }
 
@@ -90,9 +82,6 @@ export const mapDispatchToProps = dispatch => {
     loginUser: (id, name) => {
       dispatch(getId(id))
       dispatch(getName(name))
-    },
-    logoutUser: () => {
-      dispatch(logOut())
     },
     setError: (error) => {
       dispatch(errorReceived(error))

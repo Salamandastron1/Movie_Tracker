@@ -5,7 +5,6 @@ import { toggleFavorite } from '../../Action-creators/toggleFavorite';
 
 
 export const Card = ({ title , poster_path , overview , release_date , favorited, toggleFavorites, id }) => {
-  debugger;
   return (
     <div>
       <h1>{title}</h1>

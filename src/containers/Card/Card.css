@@ -20,21 +20,59 @@
   transition-duration: .5s;
 }
 
-.movie-title {
+.soda-pop {
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 1.5rem;
+  margin: 0;
+}
+
+.movie-title {
+  border-radius: 0.75rem;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
   grid-area: a;
-  margin: 1rem 1rem;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0;
+  transition: background-color .5s, color .5s;
 }
 
 img {
   grid-area: c;
   cursor: pointer;
+}
+
+.jello {
   position: relative;
   overflow: hidden;
+  height: 450px;
+  width: 300px;
+  z-index: 1;
+}
+
+.jello:hover::before {
+  cursor: pointer;
+  right: 0;
+  transition: right .5s cubic-bezier(0.73, 0.11, 0.22, 0.87);
+}
+
+.jello::before {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  content: 'Click to add this movie to your favorites!';
+  position: absolute;
+  top: 200px;
+  right: 300px;
+  background-color: black;
+  color: #CACAD1;
+  height: 50px;
+  width: 300px;
+  z-index: 9;
+  transition: all .5s cubic-bezier(0.73, 0.11, 0.22, 0.87);
 }
 
 .overview {
@@ -46,4 +84,22 @@ img {
   align-self: end;
   justify-self: center;
   grid-area: e;
+}
+
+.popcorn-show {
+  align-self: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: all .5s;
+}
+
+.popcorn-hide {
+  display: none;
+  transition: all .5s;
+}
+
+.has-color {
+  background-color: #57282F;
+  color: #CACAD1;
+  transition: background-color .5s, color .5s;
 }

@@ -10,7 +10,6 @@ import rootReducer from './reducers'
 import './index.css';
 import App from './containers/App/App';
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(

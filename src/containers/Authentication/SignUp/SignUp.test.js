@@ -63,10 +63,7 @@ describe('SignUp', () => {
         id: 9, 
         movies: [], 
         error: '' };
-      const expected = { 
-        id: 9 , 
-        error: '' , 
-        name: 'Jessica' };
+      const expected = { error: '' };
 
       const result = mapStateToProps(mockState);
 

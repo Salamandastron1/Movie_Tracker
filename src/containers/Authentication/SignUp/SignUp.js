@@ -6,6 +6,8 @@ import { errorReceived } from '../../../Action-creators/errorReceived';
 import { getId } from '../../../Action-creators/getId';
 import { getName } from '../../../Action-creators/getName';
 
+import './SignUp.css';
+
 export class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -44,8 +46,9 @@ export class SignUp extends Component {
 
     return (
       <form 
+        className='sign-up-form'
         onSubmit={this.submitNewUser}>
-        { error !== '' && <h2>{error}</h2> }
+        { error !== '' && <h2 className="error">{error}</h2> }
         <input
           className='name' 
           onChange={this.updateValue}
@@ -66,9 +69,12 @@ export class SignUp extends Component {
           type="password" 
           placeholder="Enter your password"/>
         <input 
+          className='submit'
           type='submit'  
           value='Sign Up'/>
-        <NavLink to='/login'>
+        <NavLink 
+        className='sign-in'
+        to='/login'>
           Sign In
         </NavLink>
       </form>

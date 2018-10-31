@@ -17,7 +17,7 @@ export class CardContainer extends Component {
   }
 
   render() {
-    const { movies , favorites , location } = this.props;
+    const { movies , location } = this.props;
     let movieCards;
     switch (location.pathname) {
       case '/':
@@ -49,7 +49,6 @@ export class CardContainer extends Component {
 
 export const mapStateToProps = state => ({
   movies: state.movies,
-  favorites: state.favorites,
 })
 
 export const mapDispatchToProps = dispatch => ({

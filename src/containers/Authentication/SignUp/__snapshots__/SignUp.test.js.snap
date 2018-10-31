@@ -2,9 +2,12 @@
 
 exports[`SignUp should match the snapshot 1`] = `
 <form
+  className="sign-up-form"
   onSubmit={[Function]}
 >
-  <h2 />
+  <h2
+    className="error"
+  />
   <input
     className="name"
     name="name"
@@ -28,12 +31,14 @@ exports[`SignUp should match the snapshot 1`] = `
     value=""
   />
   <input
+    className="submit"
     type="submit"
     value="Sign Up"
   />
   <NavLink
     activeClassName="active"
     aria-current="page"
+    className="sign-in"
     to="/login"
   >
     Sign In

@@ -42,7 +42,7 @@ export class SignUp extends Component {
 
   render() {
     const { name, email, password } = this.state;
-    const { error, id } = this.props;
+    const { error } = this.props;
 
     return (
       <form 
@@ -82,7 +82,7 @@ export class SignUp extends Component {
   }
 }
 
-export const mapStateToProps = state => ({ id: state.id, error: state.error, name: state.name })
+export const mapStateToProps = state => ({ error: state.error })
 
 export const mapDispatchToProps = dispatch => ({ 
       loginUser: (id, name) => {

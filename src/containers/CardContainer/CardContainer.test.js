@@ -11,7 +11,10 @@ describe('CardContainer', () => {
     const initialState = {movies: [{}, {}]}
     const store = mockStore(initialState);
 
-    const wrapper = shallow(<CardContainer store={store} movies={[{id:1},{id:2},{id:3}]} />);
+    const wrapper = shallow(<CardContainer 
+      store={store} 
+      movies={[{id:1},{id:2},{id:3}]}
+      location={{pathname: '/'}} />);
 
     expect(wrapper).toMatchSnapshot();
   });

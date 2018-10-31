@@ -62,7 +62,7 @@ export class SignIn extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { error, id, name } = this.props;
+    const { error } = this.props;
 
     return (
       <form 
@@ -97,10 +97,8 @@ export class SignIn extends Component {
 }
 
 export const mapStateToProps = state => {
-  return { 
-    id: state.id, 
-    error: state.error, 
-    name: state.name,
+  return {  
+    error: state.error,
     movies: state.movies
   }
 }

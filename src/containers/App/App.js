@@ -33,7 +33,7 @@ class App extends Component {
               <i className="fas fa-sign-in-alt"></i>
             </NavLink> : 
             <NavLink
-              className='log-link' 
+              className='log-out' 
               to='/' 
               onClick={logoutUser}>
               Sign Out

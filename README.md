@@ -3,7 +3,7 @@
  An interactive Application that allows you to search a database of movies and select favorites
 
 ### See it Live
-[insert Live link to application]
+Coming soon!
 
 ### APIs Used
 * MovieDB.org 
@@ -28,7 +28,10 @@ Movie Tracker uses Jest and Enzyme for all testing purposes
 
 ### Next Steps
 Additional enhancments could include :
-* [Any cool features we could possibly add after deadline]
+* Carousel effects for mobile and tablet versions
+* Focus effects for movie selection
+* Hide details for each movie until the card is clicked
+* Let user choose what movies to show based on date released, director, genre, etc.
 
 ### ScreenShots
 
@@ -36,7 +39,9 @@ Additional enhancments could include :
 
 ![Wireframe](./public/new-wire.png)
 
-#### [insert application screenshots]
+#### Desktop Version
+
+![Wireframe](./public/desktop.png)
 
 ### Original Assignment
 

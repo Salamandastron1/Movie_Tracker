@@ -1,27 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
 header {
-  margin: 10px;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  grid-template-areas: 
-  'b a .'
-  'c . .'
-  'd . .'
+  grid-template-areas: 'b a e' 'c . .' 'd . .';
+  height: 100px;
+  background: #990000;
+  padding: 10px;
 }
 .title {
   grid-area: a;
   margin: 0;
   justify-self: center;
+  text-decoration: none;
+  font-family: 'Roboto Slab', serif;
+  color: #CACAD1;
+  font-size: 3em;
+  text-shadow: -5px 0 4px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 h2 {
   margin: 0;
   grid-area: b;
 }
-
+.favorites {
+  grid-area: e;
+}
 .log-link {
   grid-area: c;
+  text-decoration: none;
+  color: #CACAD1;
+  text-shadow: 3px 2px black, 1px 2px 2px black;
+  font-size: 1.5em;
 }
-
+.fa-sign-in-alt {
+  margin-left: 1%;
+}
 form {
   grid-area: d;
 }

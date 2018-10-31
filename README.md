@@ -18,7 +18,8 @@ Coming soon!
 
 1. Clone down repo
 2. `npm install` from root directory
-3. `npm start` and visit `localhost:3000` in your browser
+3. `npm start` and visit `localhost:3001` in your browser
+4. You will need to 
 
 ### Test Driven Development
 

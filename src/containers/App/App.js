@@ -24,15 +24,21 @@ class App extends Component {
           >
             Movie Tracker
           </NavLink>
-          {id ? <h2>{`Welcome, ${name}!`}</h2> : null}
+          {id ? <h2 className='welcome'>{`Welcome, ${name}!`}</h2> : null}
           {!id ? 
             <NavLink 
               className='log-link' 
               to='/login'>
               Login
-              <i class="fas fa-sign-in-alt"></i>
+              <i className="fas fa-sign-in-alt"></i>
             </NavLink> : 
-            <NavLink className='log-link' to='/' onClick={logoutUser}>Sign Out</NavLink>}
+            <NavLink
+              className='log-link' 
+              to='/' 
+              onClick={logoutUser}>
+              Sign Out
+              <i className="fas fa-sign-in-alt"></i> 
+            </NavLink>}
           {id && favorites === 'SHOW_ALL' ? <NavLink 
                   to='/favorites'
                   onClick={showFavorites}

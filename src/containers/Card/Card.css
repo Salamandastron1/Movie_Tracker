@@ -1,34 +1,49 @@
 .card {
+  background-color: #CACAD1;
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 1rem #000000;
   display: grid;
-  grid-template-areas: 
-  'a a b'
-  'c c c'
-  'd d d '
-  'e . .';
-  grid-template-rows: -webitmin-min-content;
-  grid-template-rows: min-content;
+  grid-template: 
+    'a a a' auto
+    'c c c' auto
+    'd d d' 1fr
+    'e e e' auto
+    / auto auto auto;
+  margin: 20px 0;
+  transition-duration: .5s;
+  width: 300px;
 }
+
+.card:hover {
+  box-shadow: 3rem 3rem 1rem rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  transition-duration: .5s;
+}
+
 .movie-title {
   white-space: nowrap;
   overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
-  font-size: 1em;
+  font-size: 1.5rem;
   grid-area: a;
-  margin: 0;
-}
-
-.button {
-  grid-area: b;
+  margin: 1rem 1rem;
 }
 
 img {
   grid-area: c;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .overview {
   grid-area: d;
+  padding: 0 1em;
 }
 
 .release_date {
+  align-self: end;
+  justify-self: center;
   grid-area: e;
 }

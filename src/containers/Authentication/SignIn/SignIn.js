@@ -8,6 +8,8 @@ import { getName } from '../../../Action-creators/getName';
 import { toggleFavorite } from '../../../Action-creators/toggleFavorite';
 import { setMostRecent } from '../../../Action-creators/setMostRecent';
 
+import './SignIn.css';
+
 
 export class SignIn extends Component {
   constructor() {
@@ -64,8 +66,9 @@ export class SignIn extends Component {
 
     return (
       <form 
+        className='sign-in-form'
         onSubmit={this.loginUser}>
-        { error !== '' && <h2> { error } </h2> }
+        { error !== '' && <h2 className="error"> { error } </h2> }
         <input 
           className='email' 
           onChange={this.updateValue}
@@ -80,9 +83,12 @@ export class SignIn extends Component {
           type="password" 
           placeholder="Enter your password"/>
         <input 
+          className='submit'
           type='submit'
           value='Sign In' />
-        <NavLink to='/signup'>
+        <NavLink 
+        className='sign-up'
+        to='/signup'>
           Sign up 
         </NavLink>
       </form>

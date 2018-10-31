@@ -1,0 +1,42 @@
+* {
+  font-family: 'Roboto Slab', serif;
+
+}
+
+.sign-up-form {
+  background-color: #CACAD1;
+  border-radius: 10px;
+  border-color:  #37424E;
+  border-width: 2px;
+  box-shadow: 10px 9px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3.5%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: absolute;
+  width: 250px;
+  z-index: 10;
+}
+
+.name {
+  border-radius: 5px;
+  border-color:  #37424E;
+  font-family: 'Roboto Slab', serif;
+  height: 1.25rem;
+  margin-top: 10px;
+  padding-left: 5px;
+  width: 75%;
+}
+
+.submit {
+  margin-top: 100px;
+}
+
+.sign-in {
+  color: #990000;
+  font-size: 1.25rem;
+  margin-left: 3.75rem;
+  margin-top: 15px;
+  text-decoration: none;
+}

@@ -1,4 +1,7 @@
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  background-color: #990000;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 2rem 0 2.5rem 0;
 }

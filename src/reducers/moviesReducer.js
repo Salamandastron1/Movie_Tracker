@@ -10,6 +10,10 @@ export const moviesReducer = (state = [], action) => {
             return Object.assign({}, movie, {favorited: !movie.favorited})
           }
         })
+      case 'LOG_OUT':
+        return state.map(movie => {
+          return Object.assign({}, movie, {favorited: false})
+        });
       default:
         return state
   }

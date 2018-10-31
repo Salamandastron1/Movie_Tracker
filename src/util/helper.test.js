@@ -1,5 +1,6 @@
 import * as API from './helper.js';
 import * as mock from './mocks.js';
+import { promises } from 'fs';
 
 describe('API', () => {
   describe('getMovieData', () => {
@@ -32,7 +33,6 @@ describe('API', () => {
       expect(await API.getMovieData()).toEqual(expected)
     });
   });
-
   describe('cleanMovieData', () => {
 
     it('Should return data in the correct format', async () => {
@@ -124,4 +124,44 @@ describe('API', () => {
       await expect(API.addUser(mock.newUser)).rejects.toEqual(expected);
     });
   });
+  describe('getFavorites', () => {
+    let mockResponse;
+    let movie;
+    beforeEach(() => {
+      movie = {
+        id: 10,
+        movie_id: 260513,
+        overview: 'whatever you want it to be',
+        poster_path: '/whatevs.jpg',
+        release_date: '2018-06-14',
+        title: 'Incredibles 2',
+        user_id: 18, 
+        vote_average: '7.6'
+      }
+
+      mockResponse = {
+        data: [movie],
+        message: 'Retreived All favorites',
+        status: 'success'
+      }
+
+      window.fetch = jest.fn(() =>  Promise.resolve({ 
+        ok: true,
+        json: () => Promise.resolve(mockResponse)
+       }))
+    })
+    
+    it('should call fetch with the correct params', () => {
+     const expected = 'http://localhost:3000/api/users/18/favorites';
+
+     API.getFavorites(18);
+     expect(window.fetch).toHaveBeenCalledWith(expected);
+    })
+    it('should return an array of movies', async () => {
+      const expected = [movie];
+      const result = await API.getFavorites(18);
+
+      expect(result).toEqual(expected);
+    })
+  })
 });

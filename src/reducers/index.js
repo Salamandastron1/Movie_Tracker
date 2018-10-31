@@ -3,6 +3,8 @@ import { moviesReducer } from './moviesReducer'
 import { idReducer } from './idReducer'
 import { errorReducer } from './errorReducer'
 import { nameReducer } from './nameReducer'
+import { favoritesReducer } from './favoritesReducer'
+
 
 
 const rootReducer = combineReducers({
@@ -10,6 +12,7 @@ const rootReducer = combineReducers({
   id: idReducer,
   name: nameReducer,
   error: errorReducer,
+  favorites: favoritesReducer 
 })
 
 export default rootReducer;

@@ -95,3 +95,12 @@ export const loginUser = async (user) => {
   }
   return currentUser;
 }
+
+export const getFavorites = async (id) => {
+  const url = `http://localhost:3000/api/users/${id}/favorites`
+  const response = await fetch(url);
+  if(response.ok) {
+    const favoriteMovies = await response.json();
+    return favoriteMovies.data;
+  }
+}

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App, { mapDispatchToProps, mapStateToProps } from './App';
@@ -7,6 +8,8 @@ import { createStore } from 'redux';
 import configureMockStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 import { logOut } from '../../Action-creators/logOut';
+
+
 
 describe('App', () => {
   let mockStore;
